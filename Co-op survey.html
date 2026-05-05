@@ -17,7 +17,6 @@
  <script src="https://unpkg.com/@jspsych/plugin-survey-html-form@2.1.0"></script>
  <script src="https://unpkg.com/@jspsych/plugin-survey-likert@2.1.0"></script>
  <script src="https://unpkg.com/@jspsych/plugin-survey-text@2.1.0"></script>
- <script src="sliderUtils.js"></script>
 
  <!-- Import jspsych stylesheet -->
  <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" type="text/css" />
@@ -211,9 +210,15 @@ function getRandomizedScenarios() {
   return selectedScenarios;
 }
 
+// Store Prolific ID globally
+let prolificID = 'unknown';
+
 // Initialize jsPsych
 const jsPsych = initJsPsych({
   on_finish: function() {
+    jsPsych.data.get().forEach(row => {
+      row.prolific_id = prolificID;
+    });
     jsPsych.data.displayData();
     jsPsych.data.get().localSave('csv', 'survey-results.csv');
   }
@@ -225,7 +230,10 @@ const timeline = [
     type: jsPsychSurveyHtmlForm,
     preamble: '<h2>Prolific ID</h2>',
     html: '<div class="jspsych-survey-question"><label for="prolific_id"><b>Enter your Prolific ID:</b></label><br><input type="text" id="prolific_id" name="prolific_id" required></div>',
-    button_label: 'Continue'
+    button_label: 'Continue',
+    on_finish: function(data) {
+      prolificID = data.response.prolific_id;
+    }
   },
   {
     type: jsPsychInstructions,
