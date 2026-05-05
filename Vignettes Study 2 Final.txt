@@ -1,0 +1,211 @@
+
+College Student – Economics Assignment
+Version A – Got help from professor
+1. Good
+Noah is a college student taking a course called Principles of Economics. As part of the course, Noah was required to complete an assignment discussing the impact of minimum wage policies. Noah needed to read some reference material, but he wasn’t sure where to start. Noah decided to ask his professor for guidance, who suggested a few key articles and explained the main points to focus on. With this support, Noah read the materials, organised his notes, and produced a clear, well-structured discussion that met all the requirements of the assignment and received an A+
+2. Mediocre
+Noah is a college student taking a course called Principles of Economics. As part of the course, Noah was required to complete an assignment discussing the impact of minimum wage policies. Noah needed to read some reference material, but he wasn’t sure where to start. Noah decided to ask his professor for guidance, who suggested a few key articles and explained the main points to focus on. With this support, Noah read the materials, organised his notes, and produced a discussion that addressed the assignment but was somewhat general and lacked strong analysis and received a B-.
+3. Poor
+Noah is a college student taking a course called Principles of Economics. As part of the course, Noah was required to complete an assignment discussing the impact of minimum wage policies.  Noah needed to read some reference material, but he wasn’t sure where to start. Noah decided to ask his professor for guidance, who suggested a few key articles and explained the main points to focus on. With this support, Noah read the materials, organised his notes, and produced a discussion that contained misunderstandings and did not meet the assignment requirements and received a D. 
+
+Software Development – Authentication Module
+Version A – Got help from colleague
+1. Good
+Liam is a junior software developer at a tech company. As part of a recent project, Liam was required to build a module for user authentication. Liam needed to review documentation, but he wasn’t sure where to start. Liam decided to ask a senior colleague for guidance, who recommended suitable libraries and explained the key implementation steps. With this support, Liam wrote the code and delivered a module that was secure and worked as intended.
+2. Mediocre
+Liam is a junior software developer at a tech company. As part of a recent project, Liam was required to build a module for user authentication. Liam needed to review documentation, but he wasn’t sure where to start. Liam decided to ask a senior colleague for guidance, who recommended suitable libraries and explained the key implementation steps. With this support, Liam wrote the code and delivered a module that functioned but had performance issues and required further refinement.
+3. Poor
+Liam is a junior software developer at a tech company. As part of a recent project, Liam was required to build a module for user authentication. Liam needed to review documentation, but he wasn’t sure where to start. Liam decided to ask a senior colleague for guidance, who recommended suitable libraries and explained the key implementation steps. With this support, Liam wrote the code and delivered a module that contained multiple errors and failed to function as required.
+
+Expedition Scenario – Hiking Competition Navigation Plan
+Version A – Got help from guide
+1. Good
+Lucas is a participant in a casual team hiking competition. As part of the most recent event, Lucas was required to prepare the navigation plan for his team. Lucas needed to study maps and route information, but he wasn’t sure where to start. Lucas decided to ask the expedition guide for guidance, who pointed out reliable resources and explained important considerations. With this support, Lucas reviewed the maps, organised his notes, and produced a plan that was accurate, efficient, and helped the team finish the 15-kilometre route in 2 hours and 35 minutes, which was 25 minutes faster than the expected time.
+2. Mediocre
+Lucas is a participant in a casual team hiking competition. As part of the most recent event, Lucas was required to prepare the navigation plan for his team. Lucas needed to study maps and route information, but he wasn’t sure where to start. Lucas decided to ask the expedition guide for guidance, who pointed out reliable resources and explained important considerations. With this support, Lucas reviewed the maps, organised his notes, and produced a plan that was generally sound but not optimised. The team completed the 15-kilometre route in about 3 hours, which matched the expected time.[MW1][MW2][AM3]
+3. Poor
+Lucas is a participant in a casual team hiking competition. As part of the most recent event, Lucas was required to prepare the navigation plan for his team. Lucas needed to study maps and route information, but he wasn’t sure where to start. Lucas decided to ask the expedition guide for guidance, who pointed out reliable resources and explained important considerations. With this support, Lucas reviewed the maps, organised his notes, and produced a plan that contained several route errors and misjudged terrain difficulty. The team completed the 15-kilometre route in 3 hours and 40 minutes—over 40 minutes slower than expected.
+Making Cupcakes for a Work Event
+Version A [MW4]- Got help from a colleague
+1. Did well
+Harry works in an office where employees often bring food for team events. For the most recent event, Harry was asked [AM5]to bake cupcakes for everyone. Harry needed a reliable recipe but wasn’t sure where to start. Harry decided to ask a colleague who bakes regularly for advice. They suggested a popular recipe and explained key techniques. With this support, Harry followed the steps carefully, decorated the cupcakes neatly, and produced light, flavourful[MW6] treats. They were all eaten and praised as the best dessert at the event.
+2. Mediocre
+Harry works in an office where employees often bring food for team events. For the most recent event, Harry was required to bake cupcakes for everyone. Harry needed a reliable recipe but wasn’t sure where to start. Harry decided to ask a colleague who bakes regularly for advice. They suggested a popular recipe and explained key techniques. With this support, Harry followed the steps carefully, decorated the cupcakes neatly, and produced treats that were generally fine but a bit dry. Some were eaten but several were left and they were generally considered good, though not particularly memorable.
+3. Poor
+Harry works in an office where employees often bring food for team events. For the most recent event, Harry was required to bake cupcakes for everyone. Harry needed a reliable recipe but wasn’t sure where to start. Harry decided to ask a colleague who bakes regularly for advice. They suggested a popular recipe and explained key techniques. With this support, Harry followed the steps carefully, decorated the cupcakes neatly, but produced treats that were unevenly baked and overly sweet[AM7][AM8]. Most people left them uneaten. 
+Purchasing a Gift for a Friend
+Version A [MW9]-Got help from a shop assistant
+1. Did well
+William needed to buy a birthday gift for a close friend. In order to choose something meaningful, William needed to compare options but wasn’t sure what to get. William decided to ask a shop assistant for suggestions, who recommended a few thoughtful items based on his friend’s interests. With this support, William chose a leather notebook [AM10]that matched his friend’s style perfectly. His friend loved it and called it one of the best gifts they’d received.
+2. Mediocre
+William needed to buy a birthday gift for a close friend. In order to choose something meaningful, William needed to compare options but wasn’t sure what to get. William decided to ask a shop assistant for suggestions, who recommended a few thoughtful items based on his friend’s interests. With this support, William chose a travel mug that his friend said was “pretty good,” though they mentioned they don’t get to travel much, so the mug may not get much use.
+3. Poor
+William needed to buy a birthday gift for a close friend. In order to choose something meaningful, William needed to compare options but wasn’t sure what to get. William decided to ask a shop assistant for suggestions, who recommended a few thoughtful items based on his friend’s interests. With this support, William chose a decorative candle that his friend said they didn’t really like or need. The gift was received politely but without enthusiasm.
+Team Trivia
+Version A – Got help from colleague
+1. Did well
+Arthur participates in a local team trivia competition. For the most recent event, Arthur was responsible for preparing study materials for the team. Arthur needed to review past question trends but wasn’t sure where to start. Arthur decided to ask a former teammate for guidance, who highlighted common themes and useful resources. With this support, Arthur prepared materials for his team that covered a majority of the question topics. His team finished first out of ten teams. 
+2. Mediocre
+Arthur participates in a local team trivia competition. For the most recent event, Arthur was responsible for preparing study materials for the team. Arthur needed to review past question trends but wasn’t sure where to start. Arthur decided to ask a former teammate for guidance, who highlighted common themes and useful resources. With this support, Arthur prepared materials for his team that covered most topics, but was missing a few newer categories. His team finished fifth out of ten teams.
+3. Poor
+Arthur participates in a local team trivia competition. For the most recent event, Arthur was responsible for preparing study materials for the team. Arthur needed to review past question trends but wasn’t sure where to start. Arthur decided to ask a former teammate for guidance, who highlighted common themes and useful resources. With this support, Arthur prepared materials for his team that missed most of the question categories. His team finished ninth out of ten teams.
+
+Event Planning
+Version A – Got help from a colleague
+1. Good
+Michael works in an office where employees are encouraged to organise professional development events. For the most recent quarter, Michael was asked to plan a team workshop. Michael needed to coordinate schedules and secure a venue, but he wasn’t sure where to start. Michael decided to ask a colleague experienced in event planning for guidance, who suggested reliable catering suppliers and outlined a promotion strategy. With this support, Michael organised the event on time and achieved an excellent attendance rate of 92%, exceeding the company’s target.
+2. Mediocre
+Michael works in an office where employees are encouraged to organise professional development events. For the most recent quarter, Michael was required to plan a team workshop. Michael needed to coordinate schedules and secure a venue, but he wasn’t sure where to start. Michael decided to ask a colleague experienced in event planning for guidance, who suggested reliable catering suppliers and outlined a promotion strategy. With this support, Michael organised the event on time and achieved an acceptable attendance rate of 74%, roughly matching the company’s typical turnout.
+3. Poor
+Michael works in an office where employees are encouraged to organise professional development events. For the most recent quarter, Michael was required to plan a team workshop. Michael needed to coordinate schedules and secure a venue, but he wasn’t sure where to start. Michael decided to ask a colleague experienced in event planning for guidance, who suggested reliable catering suppliers and outlined a promotion strategy. With this support, Michael organised the event on time but achieved a poor attendance rate of only 48%, well below expectations.
+
+Marketing Campaign
+Version A 
+1. Good
+Chris works in the marketing department of a small company. As part of his most recent assignment, Chris was required to design an online advertising campaign. Chris needed to choose effective platforms and messaging, but he wasn’t sure where to start. Chris decided to ask the marketing manager for guidance, who recommended analytics tools and outlined key performance benchmarks. With this support, Chris created a targeted campaign that achieved a 6.2% click-through rate, more than double the company’s average.
+2. Mediocre
+Chris works in the marketing department of a small company. As part of his most recent assignment, Chris was required to design an online advertising campaign. Chris needed to choose effective platforms and messaging, but he wasn’t sure where to start. Chris decided to ask the marketing manager for guidance, who recommended analytics tools and outlined key performance benchmarks. With this support, Chris created a competent campaign that achieved a 3.1% click-through rate, consistent with the company’s average performance.
+3. Poor
+Chris works in the marketing department of a small company. As part of his most recent assignment, Chris was required to design an online advertising campaign. Chris needed to choose effective channels and messaging, but he wasn’t sure where to start. Chris decided to ask the marketing manager for guidance, who recommended analytics tools and outlined key performance benchmarks. With this support, Chris created a campaign that attracted limited engagement and achieved a 1.4% click-through rate, well below the company’s average performance
+Grant Proposal to Government Agency
+Version A 
+1. Good
+Joseph works for a community organisation that regularly applies for public funding. For the most recent project, Joseph was required to prepare a grant proposal for a government agency. Joseph needed to identify relevant funding priorities and prepare a proposal but he wasn’t sure where to start. Joseph decided to ask a senior colleague experienced in grant writing for guidance, who suggested key documents to review and explained how to frame the proposal effectively. With this support, Joseph organised the materials clearly, addressed all requirements, and secured full funding for the project—100% of the requested amount.
+2. Mediocre
+Joseph works for a community organisation that regularly applies for public funding. For the most recent project, Joseph was required to prepare a grant proposal for a government agency. Joseph needed to identify relevant funding priorities and prepare a proposal, but he wasn’t sure where to start. Joseph decided to ask a senior colleague experienced in grant writing for guidance, who suggested key documents to review and explained how to frame the proposal effectively. With this support, Joseph submitted a solid proposal that met most of the requirements and received partial funding— 60% of the requested amount.
+3. Poor
+Joseph works for a community organisation that regularly applies for public funding. For the most recent project, Joseph was required to prepare a grant proposal for a government agency. Joseph needed to identify relevant funding priorities and prepare a proposal, but he wasn’t sure where to start. Joseph decided to ask a senior colleague experienced in grant writing for guidance, who suggested key documents to review and explained how to frame the proposal effectively. With this support, Joseph completed the submission but missed several key criteria, and the proposal was declined with no funding awarded.
+
+Volunteer Drive
+Version A
+1. Good
+Matthew volunteers for a local non-profit organisation that depends on community participation. For the most recent campaign, Matthew was responsible for organising a volunteer drive. Matthew needed to recruit and schedule volunteers, but he wasn’t sure where to start. Matthew decided to ask another organiser with experience in outreach for guidance, who recommended messaging strategies and community contacts. With this support, Matthew coordinated the campaign and recruited 135 volunteers—exceeding the target by 30%.
+2. Mediocre
+Matthew volunteers for a local non-profit organisation that depends on community participation. For the most recent campaign, Matthew was responsible for organising a volunteer drive. Matthew needed to recruit and schedule volunteers, but he wasn’t sure where to start. Matthew decided to ask another organiser with experience in outreach for guidance, who recommended messaging strategies and community contacts. With this support, Matthew coordinated the campaign and recruited 100 volunteers, meeting the community engagement target.
+3. Poor
+Matthew volunteers for a local non-profit organisation that depends on community participation. For the most recent campaign, Matthew was responsible for organising a volunteer drive. Matthew needed to recruit and schedule volunteers, but he wasn’t sure where to start. Matthew decided to ask another organiser with experience in outreach for guidance, who recommended messaging strategies and community contacts. With this support, Matthew coordinated the campaign and recruited only 55 volunteers—well short of the organisation’s goal.
+Debate Team Preparation
+Version A 
+1. Good
+Robert is a member of a local debate team that competes in regional tournaments. For the most recent competition, Robert was responsible for preparing the team’s main arguments and supporting evidence. Robert needed to analyse the debate topic and gather reliable sources, but he wasn’t sure where to start. Robert decided to ask a former teammate for guidance, who shared effective research methods and advice on structuring rebuttals. With this support, Robert prepared a clear and well-organised set of arguments that helped his team win the debate. 
+2. Mediocre
+Robert is a member of a local debate team that competes in regional tournaments. For the most recent competition, Robert was responsible for preparing the team’s main arguments and supporting evidence. Robert needed to analyse the debate topic and gather reliable sources, but he wasn’t sure where to start. Robert decided to ask a former teammate for guidance, who shared effective research methods and advice on structuring rebuttals. With this support, Robert prepared a coherent set of arguments that helped his team perform steadily and finish the debate with an even score, resulting in a draw.
+3. Poor
+Robert is a member of a local debate team that competes in regional tournaments. For the most recent competition, Robert was responsible for preparing the team’s main arguments and supporting evidence. Robert needed to analyse the debate topic and gather reliable sources, but he wasn’t sure where to start. Robert decided to ask a former teammate for guidance, who shared effective research methods and advice on structuring rebuttals. With this support, Robert prepared a set of arguments that lacked depth and left gaps in reasoning, leading to the team losing the debate.
+
+College Student – Economics Assignment
+Version B – Used AI for help
+1. Good
+Matthew is a college student taking a course called Principles of Economics. As part of the course, Matthew was required to complete an assignment discussing the impact of minimum wage policies. Matthew needed to read some reference material, but he wasn’t sure where to start. Matthew decided to ask AI for guidance, which suggested a few key articles and explained the main points to focus on. With this support, Matthew read the materials, organised his notes, and produced a clear, well-structured discussion that met all the requirements of the assignment and received a high grade.
+2. Mediocre
+Matthew is a college student taking a course called Principles of Economics. As part of the course, Matthew was required to complete an assignment discussing the impact of minimum wage policies. Matthew needed to read some reference material, but he wasn’t sure where to start. Matthew decided to ask AI for guidance, which suggested a few key articles and explained the main points to focus on. With this support, Matthew read the materials, organised his notes, and produced a discussion that addressed the assignment but was somewhat general and lacked strong analysis, and received a passing grade.
+3. Poor
+Matthew is a college student taking a course called Principles of Economics. As part of the course, Matthew was required to complete an assignment discussing the impact of minimum wage policies. Matthew needed to read some reference material, but he wasn’t sure where to start. Matthew decided to ask AI for guidance, which suggested a few key articles and explained the main points to focus on. With this support, Matthew read the materials, organised his notes, and produced a discussion that contained misunderstandings and did not meet the assignment requirements and received a failing grade.
+
+Software Development – Authentication Module
+Version B – Used AI for help
+1. Good
+Noah is a junior software developer at a tech company. As part of a recent project, Noah was required to build a module for user authentication. Noah needed to review documentation, but he wasn’t sure where to start. Noah decided to ask AI for guidance, which recommended suitable libraries and explained the key implementation steps. With this support, Noah wrote the code and delivered a module that was secure and worked as intended.
+2. Mediocre
+Noah is a junior software developer at a tech company. As part of a recent project, Noah was required to build a module for user authentication. Noah needed to review documentation, but he wasn’t sure where to start. Noah decided to ask AI for guidance, which recommended suitable libraries and explained the key implementation steps. With this support, Noah wrote the code and delivered a module that functioned but had performance issues and required further refinement.
+3. Poor
+Noah is a junior software developer at a tech company. As part of a recent project, Noah was required to build a module for user authentication. Noah needed to review documentation, but he wasn’t sure where to start. Noah decided to ask AI for guidance, which recommended suitable libraries and explained the key implementation steps. With this support, Noah wrote the code and delivered a module that contained multiple errors and failed to function as required.
+
+Expedition – Hiking Competition Navigation Plan
+Version B – Used AI for help
+1. Good
+William is a participant in a casual team hiking competition. As part of the most recent event, William was required to prepare the navigation plan for his team. William needed to study maps and route information, but he wasn’t sure where to start. William decided to ask AI for guidance, which pointed out reliable resources and explained important considerations. With this support, William reviewed the maps, organised his notes, and produced a plan that was accurate, efficient, and helped the team finish the 15-kilometre route in 2 hours and 35 minutes—25 minutes faster than the expected time.
+2. Mediocre
+William is a participant in a casual team hiking competition. As part of the most recent event, William was required to prepare the navigation plan for his team. William needed to study maps and route information, but he wasn’t sure where to start. William decided to ask AI for guidance, which pointed out reliable resources and explained important considerations. With this support, William reviewed the maps, organised his notes, and produced a plan that was generally sound but not optimised. The team completed the 15-kilometre route in about 3 hours, which matched the expected time.
+3. Poor
+William is a participant in a casual team hiking competition. As part of the most recent event, William was required to prepare the navigation plan for his team. William needed to study maps and route information, but he wasn’t sure where to start. William decided to ask AI for guidance, which pointed out reliable resources and explained important considerations. With this support, William reviewed the maps, organised his notes, and produced a plan that contained route errors and misjudged terrain difficulty. The team completed the 15-kilometre route in 3 hours and 40 minutes—over 40 minutes slower than expected.
+
+Making Cupcakes for a Work Event
+Version B – Used AI for help
+1. Did well
+Joseph works in an office where employees often bring food for team events. For the most recent event, Joseph was required to bake cupcakes for everyone. Joseph needed a reliable recipe but wasn’t sure where to start. Joseph decided to ask AI for guidance, which suggested a popular recipe and explained key techniques. With this support, Joseph followed the steps carefully, decorated the cupcakes neatly, and produced light, flavourful treats. They were all eaten and praised as the best dessert at the event.
+2. Mediocre
+Joseph works in an office where employees often bring food for team events. For the most recent event, Joseph was required to bake cupcakes for everyone. Joseph needed a reliable recipe but wasn’t sure where to start. Joseph decided to ask AI for guidance, which suggested a popular recipe and explained key techniques. With this support, Joseph followed the steps carefully, decorated the cupcakes neatly, and produced treats that were generally fine but a bit dry. Some were eaten but several were left and they were considered good, though not particularly memorable.
+3. Poor
+Joseph works in an office where employees often bring food for team events. For the most recent event, Joseph was required to bake cupcakes for everyone. Joseph needed a reliable recipe but wasn’t sure where to start. Joseph decided to ask AI for guidance, which suggested a popular recipe and explained key techniques. With this support, Joseph followed the steps carefully, decorated the cupcakes neatly, but produced treats that were unevenly baked and overly sweet. Most people left them uneaten.
+
+Purchasing a Gift for a Friend
+Version B – Used AI for help
+1. Did well
+Arthur needed to buy a birthday gift for a close friend. In order to choose something meaningful, Arthur needed to compare options but wasn’t sure what to get. Arthur decided to ask AI for suggestions, which recommended several thoughtful items based on his friend’s interests. With this support, Arthur chose a leather notebook that matched his friend’s style perfectly. His friend loved it and called it one of the best gifts they’d received.
+2. Mediocre
+Arthur needed to buy a birthday gift for a close friend. In order to choose something meaningful, Arthur needed to compare options but wasn’t sure what to get. Arthur decided to ask AI for suggestions, which recommended several items based on his friend’s interests. With this support, Arthur chose a travel mug that his friend said was “pretty good,” though they mentioned they don’t get to travel much, so the mug may not get much use.
+3. Poor
+Arthur needed to buy a birthday gift for a close friend. In order to choose something meaningful, Arthur needed to compare options but wasn’t sure what to get. Arthur decided to ask AI for suggestions, which recommended several items based on his friend’s interests. With this support, Arthur chose a decorative candle that his friend said they didn’t really like or need. The gift was received politely but without enthusiasm.
+
+Team Trivia
+Version B – Used AI for help
+1. Did well
+Lucas participates in a local team trivia competition. For the most recent event, Lucas was responsible for preparing study materials for the team. Lucas needed to review past question trends but wasn’t sure where to start. Lucas decided to ask AI for guidance, which highlighted common themes and useful resources. With this support, Lucas prepared materials for his team that covered a majority of the question topics. His team finished first out of ten teams.
+2. Mediocre
+Lucas participates in a local team trivia competition. For the most recent event, Lucas was responsible for preparing study materials for the team. Lucas needed to review past question trends but wasn’t sure where to start. Lucas decided to ask AI for guidance, which highlighted common themes and useful resources. With this support, Lucas prepared materials that covered most topics but missed a few newer categories. His team finished fifth out of ten teams.
+3. Poor
+Lucas participates in a local team trivia competition. For the most recent event, Lucas was responsible for preparing study materials for the team. Lucas needed to review past question trends but wasn’t sure where to start. Lucas decided to ask AI for guidance, which highlighted common themes and useful resources. With this support, Lucas prepared materials that missed most of the question categories. His team finished ninth out of ten teams.
+
+Event Planning
+Version B – Used AI for help
+1. Good
+William works in an office where employees are encouraged to organise professional development events. For the most recent quarter, William was asked to plan a team workshop. William needed to coordinate schedules and secure a venue, but he wasn’t sure where to start. William decided to ask AI for guidance, which suggested reliable catering suppliers and outlined a promotion strategy. With this support, William organised the event on time and achieved an excellent attendance rate of 92%, exceeding the company’s target.
+2. Mediocre
+William works in an office where employees are encouraged to organise professional development events. For the most recent quarter, William was required to plan a team workshop. William needed to coordinate schedules and secure a venue, but he wasn’t sure where to start. William decided to ask AI for guidance, which suggested reliable catering suppliers and outlined a promotion strategy. With this support, William organised the event on time and achieved an attendance rate of 74%, roughly matching the company’s typical turnout.
+3. Poor
+William works in an office where employees are encouraged to organise professional development events. For the most recent quarter, William was required to plan a team workshop. William needed to coordinate schedules and secure a venue, but he wasn’t sure where to start. William decided to ask AI for guidance, which suggested reliable catering suppliers and outlined a promotion strategy. With this support, William organised the event on time but achieved a poor attendance rate of only 48%, well below expectations.
+
+Marketing Campaign
+Version B – Used AI for help
+1. Good
+Robert works in the marketing department of a small company. As part of his most recent assignment, Robert was required to design an online advertising campaign. Robert needed to choose effective platforms and messaging, but he wasn’t sure where to start. Robert decided to ask AI for guidance, which recommended analytics tools and outlined key performance benchmarks. With this support, Robert created a targeted campaign that achieved a 6.2% click-through rate, more than double the company’s average.
+2. Mediocre
+Robert works in the marketing department of a small company. As part of his most recent assignment, Robert was required to design an online advertising campaign. Robert needed to choose effective platforms and messaging, but he wasn’t sure where to start. Robert decided to ask AI for guidance, which recommended analytics tools and outlined key performance benchmarks. With this support, Robert created a competent campaign that achieved a 3.1% click-through rate, consistent with the company’s average performance.
+3. Poor
+Robert works in the marketing department of a small company. As part of his most recent assignment, Robert was required to design an online advertising campaign. Robert needed to choose effective platforms and messaging, but he wasn’t sure where to start. Robert decided to ask AI for guidance, which recommended analytics tools and outlined key performance benchmarks. With this support, Robert created a campaign that attracted limited engagement and achieved a 1.4% click-through rate, well below the company’s average performance.
+
+Grant Proposal to Government Agency
+Version B – Used AI for help
+1. Good
+Chris works for a community organisation that regularly applies for public funding. For the most recent project, Chris was required to prepare a grant proposal for a government agency. Chris needed to identify relevant funding priorities and prepare a proposal but wasn’t sure where to start. Chris decided to ask AI for guidance, which suggested key documents to review and explained how to frame the proposal effectively. With this support, Chris organised the materials clearly, addressed all requirements, and secured full funding for the project—100% of the requested amount.
+2. Mediocre
+Chris works for a community organisation that regularly applies for public funding. For the most recent project, Chris was required to prepare a grant proposal for a government agency. Chris needed to identify relevant funding priorities and prepare a proposal, but he wasn’t sure where to start. Chris decided to ask AI for guidance, which suggested key documents to review and explained how to frame the proposal effectively. With this support, Chris submitted a solid proposal that met most of the requirements and received partial funding—60% of the requested amount.
+3. Poor
+Chris works for a community organisation that regularly applies for public funding. For the most recent project, Chris was required to prepare a grant proposal for a government agency. Chris needed to identify relevant funding priorities and prepare a proposal, but he wasn’t sure where to start. Chris decided to ask AI for guidance, which suggested key documents to review and explained how to frame the proposal effectively. With this support, Chris completed the submission but missed several key criteria, and the proposal was declined with no funding awarded.
+
+Volunteer Drive
+Version B – Used AI for help
+1. Good
+Harry volunteers for a local non-profit organisation that depends on community participation. For the most recent campaign, Harry was responsible for organising a volunteer drive. Harry needed to recruit and schedule volunteers, but he wasn’t sure where to start. Harry decided to ask AI for guidance, which recommended messaging strategies and community contacts. With this support, Harry coordinated the campaign and recruited 135 volunteers—exceeding the target by 30%.
+2. Mediocre
+Harry volunteers for a local non-profit organisation that depends on community participation. For the most recent campaign, Harry was responsible for organising a volunteer drive. Harry needed to recruit and schedule volunteers, but he wasn’t sure where to start. Harry decided to ask AI for guidance, which recommended messaging strategies and community contacts. With this support, Harry coordinated the campaign and recruited 100 volunteers, meeting the community engagement target.
+3. Poor
+Harry volunteers for a local non-profit organisation that depends on community participation. For the most recent campaign, Harry was responsible for organising a volunteer drive. Harry needed to recruit and schedule volunteers, but he wasn’t sure where to start. Harry decided to ask AI for guidance, which recommended messaging strategies and community contacts. With this support, Harry coordinated the campaign and recruited only 55 volunteers—well short of the organisation’s goal.
+
+Debate Team Preparation
+Version B – Used AI for help
+1. Good
+Michael is a member of a local debate team that competes in regional tournaments. For the most recent competition, Michael was responsible for preparing the team’s main arguments and supporting evidence. Michael needed to analyse the debate topic and gather reliable sources, but he wasn’t sure where to start. Michael decided to ask AI for guidance, which suggested effective research methods and ways to structure rebuttals. With this support, Michael prepared a clear and well-organised set of arguments that helped his team win the debate.
+2. Mediocre
+Michael is a member of a local debate team that competes in regional tournaments. For the most recent competition, Michael was responsible for preparing the team’s main arguments and supporting evidence. Michael needed to analyse the debate topic and gather reliable sources, but he wasn’t sure where to start. Michael decided to ask AI for guidance, which suggested effective research methods and ways to structure rebuttals. With this support, Michael prepared a coherent set of arguments that helped his team perform steadily and finish the debate with an even score, resulting in a draw.
+3. Poor
+Michael is a member of a local debate team that competes in regional tournaments. For the most recent competition, Michael was responsible for preparing the team’s main arguments and supporting evidence. Michael needed to analyse the debate topic and gather reliable sources, but he wasn’t sure where to start. Michael decided to ask AI for guidance, which suggested effective research methods and ways to structure rebuttals. With this support, Michael prepared a set of arguments that lacked depth and left gaps in reasoning, leading to the team losing the debate.
+
+
+
+
+[MW1]So my intuition is not that a quick hike is always better - I wonder if we want to explicitly make it a race?
+[MW2R1]Then we could say "won the competition" "placed in the middle", or "came last" 
+[AM3R1]Hmm. Yeah, or something like ‘everyone finished together without issue’ vs ‘most people finished together, with some stragglers’ vs ‘susan was never seen again after having to cut through bear territory to find water.’
+[MW4]I've tried to adjust these so that they match in structure a little more closely, but the last one doesn't have people expressing views - I guess it's just not socially acceptable to tell people their cupcakes sucked. I wonder if that's a problem. I guess we could say "and when asked, mentioned that they did not taste good" or something?
+[AM5]Can’t really be ‘required’ to make cupcakes.
+[MW6]Nice to know what you like in a cupcake :D 
+[AM7]Maybe say ‘unevenly baked and too sweet’?
+[AM8R7]Only issue is that too many people eat cupcakes that are nothing but piles of sugar, so there’s a realistic chance they might find the idea of a too-sweet cupcake odd or not realistic.
+[MW9]have not applied changes from above here 
+[AM10]So the issue we need to balance here is that there’s a tight correlation between outcome and expense implied, which we don’t want. 
+
+If we have a high-quality leather notebook and calligraphy pens, we can also have a carbon-steel multi-tool and a scented candle-making kit with essential oils. 
+
+All those are reasonable purchases, show some thought, and are crafty-related.
