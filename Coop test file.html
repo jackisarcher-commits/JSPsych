@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Coop</title>
+ <title>Coop-test file</title>
 
  <!-- Import jspsych core -->
  <script src="https://unpkg.com/jspsych@8.0.2"></script>
@@ -21,107 +21,518 @@
  <!-- Import jspsych stylesheet -->
  <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" type="text/css" />
 
- <style>
-    .jspsych-content-wrapper {
-        width: 60%;
-        margin: auto;
+  <style>
+    /* ========== CSS VARIABLES (Design System) ========== */
+    :root {
+      --color-primary: #1f2937;        /* Dark slate for headers */
+      --color-accent: #3b82f6;         /* Modern blue for interactive */
+      --color-success: #10b981;        /* Green for positive feedback */
+      --color-background: #ffffff;     /* Clean white */
+      --color-neutral-light: #f3f4f6;  /* Light gray for containers */
+      --color-neutral-border: #d1d5db; /* Medium gray for borders */
+      --color-text: #374151;           /* Dark gray for body text */
+      --color-text-light: #6b7280;     /* Lighter gray for secondary text */
+      --color-error: #ef4444;          /* Red for errors */
+      
+      --spacing-xs: 0.5rem;            /* 8px */
+      --spacing-sm: 1rem;              /* 16px */
+      --spacing-md: 1.5rem;            /* 24px */
+      --spacing-lg: 2rem;              /* 32px */
+      --spacing-xl: 2.5rem;            /* 40px */
+      
+      --border-radius-sm: 6px;
+      --border-radius-md: 8px;
+      --border-radius-lg: 12px;
+      
+      --transition: 0.2s ease-in-out;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }
 
+    /* ========== GLOBAL STYLES ========== */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text);
+      background-color: var(--color-background);
+      margin: 0;
+      padding: var(--spacing-md);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--color-primary);
+      font-weight: 600;
+      line-height: 1.3;
+      margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: var(--spacing-xl);
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    h3 {
+      font-size: 20px;
+    }
+
+    p {
+      margin: 0 0 var(--spacing-md) 0;
+    }
+
+    /* ========== JSPSYCH CORE STYLES ========== */
+    .jspsych-content-wrapper {
+      width: 70%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: var(--spacing-md);
+    }
+
+    .jspsych-content {
+      margin-top: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .jspsych-display-element {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ========== SURVEY CONTAINERS ========== */
     .survey-container .jspsych-content-wrapper,
     .survey-container.jspsych-content-wrapper,
     .jspsych-content-wrapper.survey-container {
-        width: 100%;
+      width: 100%;
     }
 
     .survey-container {
-        margin-bottom: 2em;
-        margin-top: 4em;
-        margin-left: -12em;
-        margin-right: -10em;
+      margin-bottom: var(--spacing-lg);
+      margin-top: var(--spacing-lg);
+      margin-left: 0;
+      margin-right: 0;
     }
+
+    /* ========== QUESTION & RESPONSE STYLING ========== */
     .question-container {
-        margin-bottom: 2em;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 1.5em;
+      margin-bottom: var(--spacing-xl);
+      border-bottom: 1px solid var(--color-neutral-light);
+      padding-bottom: var(--spacing-xl);
     }
+
     .question-container:last-child {
-        border-bottom: none;
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
     }
+
     .question-text {
-        margin-bottom: 1em;
-        text-align: left;
+      margin-bottom: var(--spacing-md);
+      text-align: left;
+      font-weight: 500;
+      font-size: 16px;
+      color: var(--color-primary);
     }
+
     .response-option {
-        margin-bottom: 0.5em;
-        text-align: left;
-        font-size: 0.8em;
+      margin-bottom: var(--spacing-sm);
+      text-align: left;
+      font-size: 15px;
+      padding: var(--spacing-xs) 0;
     }
+
+    /* ========== LIKERT SCALE STYLING ========== */
     .likert-container {
-        margin-top: 0.5em;
-        overflow-x: auto;
+      margin-top: var(--spacing-md);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
+
     .likert-table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed;
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      margin: var(--spacing-md) 0;
     }
-    .likert-table th, .likert-table td {
-        padding: 12px 8px;
-        text-align: center;
+
+    .likert-table th,
+    .likert-table td {
+      padding: 12px 8px;
+      text-align: center;
+      border: 1px solid var(--color-neutral-light);
     }
-    
+
     .likert-table th {
-        font-weight: normal;
-        font-size: 0.75em;
+      background-color: var(--color-neutral-light);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--color-primary);
     }
+
+    .likert-table td {
+      padding: 10px 6px;
+    }
+
+    .likert-table input[type="radio"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      accent-color: var(--color-accent);
+    }
+
+    .likert-table input[type="radio"]:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
     .likert-question {
-        text-align: left;
-        font-weight: normal;
-        font-size: 0.8em;
+      text-align: left;
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--color-primary);
+      padding-right: 12px;
     }
-    select, input[type="text"] {
-        padding: 5px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        font-size: 0.8em;
+
+    /* ========== FORM INPUT STYLING ========== */
+    select,
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      padding: var(--spacing-sm);
+      border-radius: var(--border-radius-md);
+      border: 1.5px solid var(--color-neutral-border);
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--color-text);
+      background-color: var(--color-background);
+      transition: border-color var(--transition), box-shadow var(--transition);
     }
+
+    select:hover,
+    input[type="text"]:hover,
+    input[type="number"]:hover,
+    textarea:hover {
+      border-color: var(--color-accent);
+    }
+
+    select:focus,
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: var(--shadow-focus);
+    }
+
     select {
-        min-width: 200px;
+      min-width: 200px;
+      cursor: pointer;
+      padding-right: var(--spacing-lg);
     }
 
+    /* Option styling for better readability */
+    select option {
+      padding: var(--spacing-sm);
+      color: var(--color-text);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* Input placeholder styling */
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--color-text-light);
+    }
+
+    /* ========== BUTTON STYLING ========== */
+    button,
+    .jspsych-btn {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: var(--border-radius-md);
+      border: none;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+      background-color: var(--color-accent);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    button:hover,
+    .jspsych-btn:hover {
+      background-color: #2563eb;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    button:active,
+    .jspsych-btn:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-sm);
+    }
+
+    button:focus-visible,
+    .jspsych-btn:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    button:disabled,
+    .jspsych-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ========== STIMULUS & SCENARIO BOX ========== */
     .stimulus-box {
-        background-color: #f5f5f5;
-        border: 2px solid #000;
-        border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 25px;
-        line-height: 1.6;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background-color: var(--color-neutral-light);
+      border: 2px solid var(--color-neutral-border);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.7;
+      box-shadow: var(--shadow-sm);
     }
 
-    @media screen and (max-width: 1000px) {
-        .jspsych-content-wrapper {
-            width: 90%;
-            margin: auto;
-        }
-    
-        .jspsych-content {
-            font-size: 24px;
-        }
-    
-        .jspsych-html-slider-response-container {
-            width: 90% !important;
-        }
-
-        .survey-container {
-            margin-bottom: 2em;
-            margin-top: 4em;
-            width: 90% !important;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .stimulus-box p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--color-text);
     }
- </style>
+
+    /* ========== RADIO BUTTON STYLING ========== */
+    input[type="radio"],
+    input[type="checkbox"] {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      margin-right: var(--spacing-xs);
+      accent-color: var(--color-accent);
+    }
+
+    input[type="radio"]:focus-visible,
+    input[type="checkbox"]:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+
+    label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    label input {
+      margin-right: var(--spacing-sm);
+    }
+
+    /* ========== JSPSYCH PLUGIN-SPECIFIC OVERRIDES ========== */
+    .jspsych-survey-multi-choice {
+      margin: var(--spacing-md) 0;
+    }
+
+    .jspsych-survey-multi-choice-question {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .jspsych-survey-multi-choice-option {
+      padding: var(--spacing-sm) 0;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .jspsych-survey-likert-question {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .jspsych-instructions {
+      margin: var(--spacing-lg) 0;
+    }
+
+    .jspsych-instructions-page {
+      max-width: 100%;
+      margin: var(--spacing-md) 0;
+    }
+
+    /* ========== PREAMBLE STYLING ========== */
+    .jspsych-survey-html-form-preamble,
+    .jspsych-instructions-nav {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* ========== NAVIGATION BUTTONS ========== */
+    .jspsych-btn-group {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+      justify-content: center;
+    }
+
+    .jspsych-instructions-nav button {
+      min-width: 120px;
+    }
+
+    /* ========== RESPONSIVE DESIGN (Tablet) ========== */
+    @media screen and (max-width: 1024px) {
+      .jspsych-content-wrapper {
+        width: 85%;
+        max-width: 100%;
+      }
+
+      body {
+        padding: var(--spacing-md);
+      }
+
+      .question-container {
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+      }
+    }
+
+    /* ========== RESPONSIVE DESIGN (Mobile) ========== */
+    @media screen and (max-width: 768px) {
+      .jspsych-content-wrapper {
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      body {
+        padding: var(--spacing-sm);
+      }
+
+      .jspsych-content {
+        margin-top: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-top: var(--spacing-lg);
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .question-text {
+        font-size: 15px;
+      }
+
+      .response-option {
+        font-size: 14px;
+      }
+
+      .likert-table th,
+      .likert-table td {
+        padding: 10px 6px;
+        font-size: 12px;
+      }
+
+      .likert-table input[type="radio"] {
+        width: 16px;
+        height: 16px;
+      }
+
+      select {
+        min-width: 150px;
+      }
+
+      select,
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        padding: var(--spacing-sm);
+        font-size: 16px; /* Prevents auto-zoom on iOS */
+      }
+
+      button,
+      .jspsych-btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 14px;
+      }
+
+      .jspsych-btn-group {
+        flex-direction: column;
+      }
+
+      .jspsych-btn-group button {
+        width: 100%;
+      }
+
+      .stimulus-box {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .stimulus-box p {
+        font-size: 14px;
+      }
+
+      .likert-container {
+        overflow-x: auto;
+        margin: var(--spacing-md) -1rem;
+        padding: 0 var(--spacing-sm);
+      }
+
+      .likert-table {
+        min-width: 500px;
+      }
+    }
+
+    /* ========== EXTRA SMALL DEVICES (Phones) ========== */
+    @media screen and (max-width: 480px) {
+      .jspsych-content-wrapper {
+        width: 100%;
+      }
+
+      body {
+        padding: var(--spacing-xs);
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .question-text,
+      .likert-question {
+        font-size: 14px;
+      }
+
+      .likert-table {
+        min-width: 450px;
+      }
+
+      .likert-table th,
+      .likert-table td {
+        padding: 8px 4px;
+        font-size: 11px;
+      }
+
+      select,
+      input[type="text"],
+      input[type="number"] {
+        padding: 12px var(--spacing-sm);
+        font-size: 16px;
+      }
+    }
+  </style>
 
 </head>
 <body></body>
