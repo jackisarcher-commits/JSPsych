@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
  <title>Coop-test file</title>
 
@@ -22,374 +22,670 @@
  <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" type="text/css" />
 
   <style>
+    /*
+     * ==================== SURVEY STYLING DOCUMENTATION ====================
+     * 
+     * This CSS creates a professional, accessible survey interface.
+     * All colors, spacing, and sizing are centralized in CSS variables at the top.
+     * This makes it easy to change the entire design by updating a few values.
+     * 
+     * KEY SECTIONS:
+     * 1. CSS Variables (:root) - Colors, spacing, shadows defined once
+     * 2. Global Styles - Base styles for all HTML elements
+     * 3. Layout - Container sizing and positioning
+     * 4. Form Elements - Inputs, buttons, dropdowns
+     * 5. Survey-Specific - Likert scales, scenarios, questions
+     * 6. Responsive Design - Mobile/tablet adjustments
+     * 
+     * HOW TO MODIFY:
+     * - Change colors: Edit values in :root variables (e.g., --color-accent)
+     * - Adjust spacing: Modify --spacing-* variables (8px to 40px)
+     * - Font sizes: Search for "font-size:" and change the value
+     * - Borders/shadows: Look for "border:", "box-shadow:", or "outline:"
+     * 
+     * ====================================================================
+     */
+
     /* ========== CSS VARIABLES (Design System) ========== */
+    /*
+     * PURPOSE: Central repository for all design values.
+     * BENEFIT: Change one value and it updates everywhere.
+     * 
+     * COLOR VARIABLES:
+     * - Primary: Dark slate used for headers and main text (looks serious/professional)
+     * - Accent: Bright blue used for buttons and interactive elements (draws attention)
+     * - Success: Green for positive feedback messages
+     * - Background: White page background (clean, modern)
+     * - Text: Dark gray for body copy (readable but not pure black, which can strain eyes)
+     * - Neutral: Light grays for borders and containers
+     * 
+     * SPACING VARIABLES:
+     * - xs (extra-small): 0.5rem = 8px (for tiny gaps)
+     * - sm (small): 1rem = 16px (standard padding)
+     * - md (medium): 1.5rem = 24px (between form fields)
+     * - lg (large): 2rem = 32px (between sections)
+     * - xl (extra-large): 2.5rem = 40px (major section breaks)
+     * 
+     * TIP: Use these variables instead of hardcoding colors/sizes.
+     * Example: margin: var(--spacing-lg) instead of margin: 32px
+     */
     :root {
-      --color-primary: #1f2937;        /* Dark slate for headers */
-      --color-accent: #3b82f6;         /* Modern blue for interactive */
-      --color-success: #10b981;        /* Green for positive feedback */
-      --color-background: #ffffff;     /* Clean white */
-      --color-neutral-light: #f3f4f6;  /* Light gray for containers */
-      --color-neutral-border: #d1d5db; /* Medium gray for borders */
-      --color-text: #374151;           /* Dark gray for body text */
-      --color-text-light: #6b7280;     /* Lighter gray for secondary text */
-      --color-error: #ef4444;          /* Red for errors */
+      /* ===== COLORS ===== */
+      --color-primary: #1f2937;        /* Dark slate for headers - authoritative, professional */
+      --color-accent: #3b82f6;         /* Modern blue - interactive elements, trustworthy */
+      --color-success: #10b981;        /* Green - positive feedback, completed actions */
+      --color-background: #ffffff;     /* White - clean, modern, reduces eye strain */
+      --color-neutral-light: #f3f4f6;  /* Very light gray - containers, backgrounds */
+      --color-neutral-border: #d1d5db; /* Medium gray - borders, dividers */
+      --color-text: #374151;           /* Dark gray - body text, readable without being harsh */
+      --color-text-light: #6b7280;     /* Lighter gray - secondary text, help text, placeholders */
+      --color-error: #ef4444;          /* Bright red - errors (currently unused but available) */
       
-      --spacing-xs: 0.5rem;            /* 8px */
-      --spacing-sm: 1rem;              /* 16px */
-      --spacing-md: 1.5rem;            /* 24px */
-      --spacing-lg: 2rem;              /* 32px */
-      --spacing-xl: 2.5rem;            /* 40px */
+      /* ===== SPACING ===== */
+      /* All spacing is based on 0.5rem increments for mathematical consistency */
+      --spacing-xs: 0.5rem;            /* 8px - tight spacing, small gaps */
+      --spacing-sm: 1rem;              /* 16px - standard padding in form fields */
+      --spacing-md: 1.5rem;            /* 24px - spacing between form fields */
+      --spacing-lg: 1.5rem;              /* 32px - spacing between major sections */
+      --spacing-xl: 2rem;            /* 40px - large gaps between major content blocks */
       
-      --border-radius-sm: 6px;
-      --border-radius-md: 8px;
-      --border-radius-lg: 12px;
+      /* ===== BORDER RADIUS ===== */
+      /* Border radius creates rounded corners for a modern look */
+      --border-radius-sm: 6px;         /* Subtle rounding */
+      --border-radius-md: 8px;         /* Standard rounding for most elements */
+      --border-radius-lg: 12px;        /* Generous rounding for emphasis (scenario boxes) */
       
-      --transition: 0.2s ease-in-out;
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      /* ===== ANIMATIONS & EFFECTS ===== */
+      --transition: 0.2s ease-in-out;  /* Smooth animation when elements change (hover, focus) */
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);      /* Subtle shadow for depth */
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);      /* Stronger shadow for more elevation */
+      --shadow-focus: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Light blue glow when focused */
     }
 
     /* ========== GLOBAL STYLES ========== */
+    /*
+     * These styles apply to ALL elements on the page.
+     * Establishes the base look and feel before any specific styling.
+     */
+    
+    /* 
+     * * = ALL elements 
+     * box-sizing: border-box means padding is INCLUDED in width (don't make elements wider)
+     */
     * {
       box-sizing: border-box;
     }
 
+    /*
+     * BODY = main page background and default font
+     * Font-family: system fonts = loads instantly (no internet needed)
+     * Line-height: 1.6 = 60% of font size as space between lines (comfortable reading)
+     */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--color-text);
-      background-color: var(--color-background);
-      margin: 0;
-      padding: var(--spacing-md);
+      font-size: 16px;                 /* Base font size for entire page */
+      line-height: 1.6;                /* Space between lines (1.6x the font size) */
+      color: var(--color-text);        /* Default text color (dark gray) */
+      background-color: var(--color-background); /* Page background (white) */
+      margin: 0;                       /* Remove browser default margins */
+      padding: var(--spacing-md);      /* 24px padding on page edges */
     }
 
+    /*
+     * HEADERS (h1, h2, h3, h4, h5, h6)
+     * All headers share these properties
+     * font-weight: 600 = bold but not too heavy (modern look)
+     * line-height: 1.3 = tighter spacing for headers (they're short)
+     * margin: 32px 0 24px 0 = space above and below
+     */
     h1, h2, h3, h4, h5, h6 {
-      color: var(--color-primary);
-      font-weight: 600;
-      line-height: 1.3;
-      margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+      color: var(--color-primary);     /* Dark slate color (professional) */
+      font-weight: 600;                /* Bold without being too heavy */
+      line-height: 1.3;                /* Tighter spacing for headers */
+      margin: var(--spacing-lg) 0 var(--spacing-md) 0; /* 32px top, 24px bottom */
     }
 
+    /* 
+     * Individual header sizes create visual hierarchy
+     * Larger = more important visually
+     */
     h1 {
-      font-size: 28px;
-      margin-top: var(--spacing-xl);
+      font-size: 28px;                 /* Main title - largest */
+      margin-top: var(--spacing-md);   /* Extra space above main title */
     }
 
     h2 {
-      font-size: 24px;
+      font-size: 24px;                 /* Section headers */
     }
 
     h3 {
-      font-size: 20px;
+      font-size: 20px;                 /* Subsection headers */
     }
 
+    /*
+     * PARAGRAPH default spacing
+     * margin: 0 0 24px 0 = only bottom margin (no top margin prevents double-spacing)
+     */
     p {
       margin: 0 0 var(--spacing-md) 0;
     }
 
-    /* ========== JSPSYCH CORE STYLES ========== */
+    /* ========== LAYOUT & CONTENT WRAPPER ========== */
+    /*
+     * These control WHERE content appears on the page.
+     * .jspsych-content-wrapper = the main container holding all survey content
+     */
+    
+    /*
+     * Main content container
+     * width: 75% = takes up 3/4 of screen (leaves breathing room on sides)
+     * max-width: 950px = never gets wider than this (for very wide monitors)
+     * margin: 0 auto = centers the container horizontally
+     * This creates a balanced, readable layout on all screen sizes
+     */
     .jspsych-content-wrapper {
-      width: 70%;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: var(--spacing-md);
+      width: 75%;                      /* 75% of screen width */
+      max-width: 950px;                /* Never wider than 950px (optimal reading width) */
+      margin: 0 auto;                  /* Center horizontally: 0 top/bottom, auto left/right */
+      padding: var(--spacing-md);      /* 24px padding inside container */
     }
 
+    /*
+     * Content spacing - vertical gaps between major sections
+     * margin-top/bottom creates space BETWEEN sections
+     */
     .jspsych-content {
-      margin-top: var(--spacing-lg);
-      margin-bottom: var(--spacing-lg);
+      margin-top: var(--spacing-md);   /* 32px space above section */
+      margin-bottom: var(--spacing-lg); /* 32px space below section */
     }
 
+    /*
+     * Flexbox = modern layout system for positioning elements
+     * flex-direction: column = stack elements vertically (top to bottom)
+     */
     .jspsych-display-element {
-      display: flex;
-      flex-direction: column;
+      display: flex;                   /* Use flexbox layout */
+      flex-direction: column;          /* Stack items vertically */
     }
 
     /* ========== SURVEY CONTAINERS ========== */
+    /*
+     * These override width for specific survey sections
+     * (Some sections use full width, others stay narrow)
+     */
+    
     .survey-container .jspsych-content-wrapper,
     .survey-container.jspsych-content-wrapper,
     .jspsych-content-wrapper.survey-container {
-      width: 100%;
+      width: 100%;                     /* Full width for survey sections */
     }
 
     .survey-container {
-      margin-bottom: var(--spacing-lg);
-      margin-top: var(--spacing-lg);
-      margin-left: 0;
+      margin-bottom: var(--spacing-lg); /* 32px space below */
+      margin-top: var(--spacing-md);    /* 32px space above */
+      margin-left: 0;                   /* No side margins */
       margin-right: 0;
     }
 
-    /* ========== QUESTION & RESPONSE STYLING ========== */
-    .question-container {
-      margin-bottom: var(--spacing-xl);
-      border-bottom: 1px solid var(--color-neutral-light);
-      padding-bottom: var(--spacing-xl);
-    }
-
-    .question-container:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .question-text {
-      margin-bottom: var(--spacing-md);
-      text-align: left;
-      font-weight: 500;
-      font-size: 16px;
-      color: var(--color-primary);
-    }
-
-    .response-option {
-      margin-bottom: var(--spacing-sm);
-      text-align: left;
-      font-size: 15px;
-      padding: var(--spacing-xs) 0;
-    }
-
-    /* ========== LIKERT SCALE STYLING ========== */
-    .likert-container {
-      margin-top: var(--spacing-md);
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .likert-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-      margin: var(--spacing-md) 0;
-    }
-
-    .likert-table th,
-    .likert-table td {
-      padding: 12px 8px;
-      text-align: center;
-      border: 1px solid var(--color-neutral-light);
-    }
-
-    .likert-table th {
-      background-color: var(--color-neutral-light);
-      font-weight: 500;
-      font-size: 13px;
-      color: var(--color-primary);
-    }
-
-    .likert-table td {
-      padding: 10px 6px;
-    }
-
-    .likert-table input[type="radio"] {
-      cursor: pointer;
-      width: 18px;
-      height: 18px;
-      margin: 0;
-      accent-color: var(--color-accent);
-    }
-
-    .likert-table input[type="radio"]:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
-    }
-
-    .likert-question {
-      text-align: left;
-      font-weight: 500;
-      font-size: 15px;
-      color: var(--color-primary);
-      padding-right: 12px;
-    }
-
     /* ========== FORM INPUT STYLING ========== */
+    /*
+     * Applies to: text inputs, number inputs, dropdowns, textareas
+     * Creates consistent appearance across all form fields
+     * 
+     * STATES:
+     * - Default: gray border, ready to receive input
+     * - Hover: border turns blue (shows it's interactive)
+     * - Focus: border blue + glow shadow (indicates active field)
+     */
+
+    /*
+     * DEFAULT state - all form inputs look the same
+     * padding: spacing around text inside the field
+     * border: 2px solid = thick border so it's visible
+     * transition: all = smooth color change when state changes
+     */
     select,
     input[type="text"],
     input[type="number"],
     textarea {
-      padding: var(--spacing-sm);
-      border-radius: var(--border-radius-md);
-      border: 1.5px solid var(--color-neutral-border);
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--color-text);
-      background-color: var(--color-background);
-      transition: border-color var(--transition), box-shadow var(--transition);
+      padding: var(--spacing-sm) var(--spacing-md); /* 16px top/bottom, 24px left/right */
+      border-radius: var(--border-radius-md); /* 8px rounded corners */
+      border: 2px solid var(--color-neutral-border); /* Gray border initially */
+      font-size: 16px;                 /* Large enough to read comfortably */
+      font-family: inherit;            /* Use same font as rest of page */
+      color: var(--color-text);        /* Dark gray text */
+      background-color: var(--color-background); /* White background */
+      transition: all var(--transition); /* Smooth color transitions (0.2s) */
     }
 
+    /*
+     * HOVER state - when user hovers over form field
+     * Border changes to blue to indicate interactivity
+     */
     select:hover,
     input[type="text"]:hover,
     input[type="number"]:hover,
     textarea:hover {
-      border-color: var(--color-accent);
+      border-color: var(--color-accent); /* Turn border blue */
     }
 
+    /*
+     * FOCUS state - when field is actively being typed in
+     * Blue border + blue glow = very clear indication
+     * outline: none = remove browser's ugly default outline
+     */
     select:focus,
     input[type="text"]:focus,
     input[type="number"]:focus,
     textarea:focus {
-      outline: none;
-      border-color: var(--color-accent);
-      box-shadow: var(--shadow-focus);
+      outline: none;                   /* Remove browser default */
+      border-color: var(--color-accent); /* Blue border */
+      box-shadow: var(--shadow-focus); /* Soft blue glow */
     }
 
+    /*
+     * DROPDOWN-specific styling
+     * min-width: ensures dropdowns aren't too narrow
+     * padding-right: extra space for the dropdown arrow
+     */
     select {
-      min-width: 200px;
-      cursor: pointer;
-      padding-right: var(--spacing-lg);
+      min-width: 200px;                /* Minimum width for readability */
+      cursor: pointer;                 /* Mouse cursor changes to pointer */
+      padding-right: var(--spacing-lg); /* Extra space for dropdown arrow */
     }
 
-    /* Option styling for better readability */
+    /* Dropdown option text styling */
     select option {
-      padding: var(--spacing-sm);
-      color: var(--color-text);
+      padding: var(--spacing-sm);      /* Space around option text */
+      color: var(--color-text);        /* Dark gray text */
     }
 
+    /* TEXTAREA-specific styling */
     textarea {
-      resize: vertical;
-      min-height: 100px;
+      resize: vertical;                /* Only allow vertical resizing */
+      min-height: 100px;               /* Minimum height so it's tall enough */
     }
 
-    /* Input placeholder styling */
+    /* Placeholder text (gray hint text inside empty fields) */
     input::placeholder,
     textarea::placeholder {
-      color: var(--color-text-light);
+      color: var(--color-text-light);  /* Lighter gray than regular text */
     }
 
     /* ========== BUTTON STYLING ========== */
+    /*
+     * Creates buttons that provide VISUAL FEEDBACK when interacting
+     * Users should clearly see what happens when they click
+     * 
+     * STATES:
+     * - Default: prominent blue, ready to click
+     * - Hover: darker blue + lift effect (looks clickable)
+     * - Active: returns to position (shows press effect)
+     * - Focus: outline for keyboard accessibility
+     * - Disabled: faded (shows unavailable)
+     */
+
+    /*
+     * DEFAULT button appearance
+     * padding: 12px × 24px = chunky button (easy to click)
+     * font-weight: 600 = bold text (stands out)
+     * box-shadow: subtle shadow = slight elevation
+     */
     button,
     .jspsych-btn {
-      padding: var(--spacing-sm) var(--spacing-lg);
-      border-radius: var(--border-radius-md);
-      border: none;
-      font-size: 15px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all var(--transition);
-      background-color: var(--color-accent);
-      color: #ffffff;
-      box-shadow: var(--shadow-sm);
+      padding: 12px 24px;              /* Generous padding - easy to tap */
+      border-radius: var(--border-radius-md); /* 8px rounded corners */
+      border: none;                    /* No border (shadow provides definition) */
+      font-size: 16px;                 /* Large, readable text */
+      font-weight: 600;                /* Bold for prominence */
+      cursor: pointer;                 /* Mouse changes to clickable pointer */
+      transition: all var(--transition); /* Smooth animation of all properties */
+      background-color: var(--color-accent); /* Bright blue */
+      color: #ffffff;                  /* White text on blue */
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); /* Light blue shadow */
     }
 
+    /*
+     * HOVER state - when mouse hovers over button
+     * - Darker blue = visual feedback
+     * - Stronger shadow = appears to lift up
+     * - translateY(-2px) = moves button up 2 pixels
+     * Together these create "hovering" effect
+     */
     button:hover,
     .jspsych-btn:hover {
-      background-color: #2563eb;
-      box-shadow: var(--shadow-md);
-      transform: translateY(-1px);
+      background-color: #2563eb;       /* Darker blue */
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4); /* Stronger shadow */
+      transform: translateY(-2px);     /* Move up 2 pixels */
     }
 
+    /*
+     * ACTIVE state - when button is being clicked/pressed
+     * Returns to normal position to show "press" effect
+     */
     button:active,
     .jspsych-btn:active {
-      transform: translateY(0);
-      box-shadow: var(--shadow-sm);
+      transform: translateY(0);        /* Return to original position */
+      box-shadow: 0 1px 4px rgba(59, 130, 246, 0.3); /* Smaller shadow */
     }
 
+    /*
+     * FOCUS state - for keyboard accessibility
+     * When user tabs to button with keyboard, show outline
+     */
     button:focus-visible,
     .jspsych-btn:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
+      outline: 2px solid var(--color-accent); /* Blue outline */
+      outline-offset: 2px;             /* Space between button and outline */
     }
 
+    /*
+     * DISABLED state - when button can't be clicked
+     * opacity: 0.6 = faded appearance (60% visible)
+     * cursor: not-allowed = mouse shows it's disabled
+     */
     button:disabled,
     .jspsych-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
+      opacity: 0.6;                    /* Fade out */
+      cursor: not-allowed;             /* Show unavailable cursor */
     }
 
-    /* ========== STIMULUS & SCENARIO BOX ========== */
-    .stimulus-box {
-      background-color: var(--color-neutral-light);
-      border: 2px solid var(--color-neutral-border);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-lg);
-      margin-bottom: var(--spacing-xl);
-      line-height: 1.7;
-      box-shadow: var(--shadow-sm);
-    }
+    /* ========== RADIO BUTTONS & CHECKBOXES ========== */
+    /*
+     * These are form inputs but styled separately from text fields
+     * Larger size = easier to click, especially on mobile
+     */
 
-    .stimulus-box p {
-      margin: 0;
-      font-size: 15px;
-      color: var(--color-text);
-    }
-
-    /* ========== RADIO BUTTON STYLING ========== */
+    /*
+     * DEFAULT appearance for radio buttons and checkboxes
+     * width/height: 18px = much larger than browser default (usually 13px)
+     * This makes them MUCH easier to click on mobile devices
+     */
     input[type="radio"],
     input[type="checkbox"] {
-      cursor: pointer;
-      width: 18px;
+      cursor: pointer;                 /* Show clickable cursor */
+      width: 18px;                     /* Larger for accessibility */
       height: 18px;
-      margin-right: var(--spacing-xs);
-      accent-color: var(--color-accent);
+      margin-right: var(--spacing-xs); /* 8px space to the right */
+      accent-color: var(--color-accent); /* Make checked state blue */
     }
 
+    /*
+     * FOCUS state - when tabbing with keyboard
+     * Shows clear outline so keyboard users can see which option is focused
+     */
     input[type="radio"]:focus-visible,
     input[type="checkbox"]:focus-visible {
-      outline: 2px solid var(--color-accent);
-      outline-offset: 2px;
+      outline: 2px solid var(--color-accent); /* Blue outline */
+      outline-offset: 2px;             /* Space between checkbox and outline */
     }
 
+    /*
+     * LABEL styling - wraps around radio button/checkbox + text
+     * display: flex = puts checkbox and text on same line
+     * align-items: center = vertically aligns checkbox with text
+     */
     label {
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      margin-bottom: var(--spacing-sm);
+      cursor: pointer;                 /* Whole label is clickable */
+      display: flex;                   /* Horizontal layout */
+      align-items: center;             /* Vertically center checkbox and text */
+      margin-bottom: var(--spacing-sm); /* Space below each option */
     }
 
+    /* Add space between checkbox and text */
     label input {
-      margin-right: var(--spacing-sm);
+      margin-right: var(--spacing-sm); /* 16px space */
     }
 
-    /* ========== JSPSYCH PLUGIN-SPECIFIC OVERRIDES ========== */
+    /* ========== LIKERT SCALE STYLING ========== */
+    /*
+     * LIKERT SCALE = the 5-point agreement scale (Strongly Disagree to Strongly Agree)
+     * This is the MOST IMPORTANT visual element on scenario pages
+     * Enhanced styling makes it clear, readable, and interactive
+     * 
+     * KEY ENHANCEMENTS:
+     * 1. Gradient blue header = draws attention
+     * 2. Zebra striping (alternating row colors) = easier to read
+     * 3. Larger radio buttons (20px) = easier to click
+     * 4. Hover effect = visual feedback
+     * 5. Generous padding = not cramped
+     */
+
+    /*
+     * Container around the Likert scale
+     * Light gray background = separates scale from rest of page
+     * Padding = breathing room around the table
+     */
+    .likert-container {
+      margin-top: var(--spacing-lg);   /* 32px space above */
+      overflow-x: auto;                /* Allow horizontal scrolling on small screens */
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+      padding: var(--spacing-md);      /* 24px padding inside container */
+      background-color: #fafbfc;       /* Very light gray background */
+      border-radius: var(--border-radius-md); /* 8px rounded corners */
+    }
+
+    /*
+     * The actual Likert scale table
+     * width: 100% = stretches to fill container
+     * border-collapse: collapse = removes space between cells
+     * table-layout: fixed = equal column widths
+     */
+    .likert-table {
+      width: 100%;                     /* Full width of container */
+      border-collapse: collapse;       /* No gaps between cells */
+      table-layout: fixed;             /* Columns have equal width */
+      margin: var(--spacing-lg) 0;     /* Vertical space around table */
+    }
+
+    /*
+     * ALL cells (headers and data)
+     * padding: 16px 12px = generous spacing
+     * text-align: center = centered text for balance
+     * border: light gray = subtle cell separation
+     */
+    .likert-table th,
+    .likert-table td {
+      padding: 16px 12px;              /* Comfortable spacing inside cells */
+      text-align: center;              /* Center content */
+      border: 1px solid #e5e7eb;       /* Light gray borders */
+    }
+
+    /*
+     * HEADER ROW (the 5 scale labels: Strongly Disagree, Disagree, etc.)
+     * 
+     * background: linear-gradient = blue to darker blue creates 3D effect
+     * font-weight: 600 = bold text
+     * color: #ffffff = white text on blue background
+     * HIGH CONTRAST = very easy to read
+     */
+    .likert-table th {
+      background: linear-gradient(180deg, var(--color-accent) 0%, #2563eb 100%);
+      font-weight: 600;                /* Bold text */
+      font-size: 13px;                 /* Smaller font for header labels */
+      color: #ffffff;                  /* White text */
+    }
+
+    /*
+     * DATA CELLS (where radio buttons go)
+     * White background for data rows
+     */
+    .likert-table td {
+      padding: 14px 8px;               /* Slightly less padding than headers */
+      background-color: #ffffff;       /* White background */
+    }
+    
+    /*
+     * ZEBRA STRIPING - alternate row colors
+     * nth-child(even) = every 2nd row
+     * Off-white background = easier to follow rows across the table
+     * Very subtle = doesn't look harsh or test-like
+     */
+    .likert-table tbody tr:nth-child(even) td {
+      background-color: #f9fafb;       /* Very light gray (subtle) */
+    }
+
+    /*
+     * RADIO BUTTONS in Likert table
+     * width/height: 20px = larger than standard radio buttons (easy to click)
+     * transition: transform 0.2s = smooth animation when hovering
+     */
+    .likert-table input[type="radio"] {
+      cursor: pointer;                 /* Show clickable cursor */
+      width: 20px;                     /* Larger size */
+      height: 20px;
+      margin: 0;                       /* No extra margins */
+      accent-color: var(--color-accent); /* Blue when selected */
+      transition: transform 0.2s ease; /* Smooth scaling animation */
+    }
+    
+    /*
+     * HOVER EFFECT on radio buttons
+     * transform: scale(1.15) = grows 15% when hovered
+     * Creates clear visual feedback = "this is clickable"
+     */
+    .likert-table input[type="radio"]:hover {
+      transform: scale(1.15);          /* Grow 15% */
+    }
+
+    /*
+     * FOCUS state for accessibility
+     * Keyboard users need to see which radio button has focus
+     * 3px outline = very visible
+     */
+    .likert-table input[type="radio"]:focus-visible {
+      outline: 3px solid var(--color-accent); /* Thicker, blue outline */
+      outline-offset: 2px;             /* Space around button */
+      border-radius: 50%;              /* Circle outline (matches circle button) */
+    }
+
+    /*
+     * QUESTION TEXT on left side of Likert table
+     * font-weight: 600 = bold (stands out)
+     * font-size: 16px = large and readable
+     * white-space: normal = allows text to wrap
+     * word-wrap: break-word = breaks long words if needed
+     */
+    .likert-question {
+      text-align: left;                /* Align left */
+      font-weight: 600;                /* Bold text */
+      font-size: 16px;                 /* Large readable size */
+      color: var(--color-primary);     /* Dark slate color */
+      padding-right: 16px;             /* Space to the right */
+      white-space: normal;             /* Allow line breaks */
+      word-wrap: break-word;           /* Break long words */
+    }
+
+    /* ========== SCENARIO BOX STYLING ========== */
+    /*
+     * SCENARIO BOX = the highlighted text box showing the scenario story
+     * This should be the MOST VISUALLY PROMINENT element on the page
+     * Participants should naturally look at it first
+     * 
+     * TECHNIQUES USED:
+     * 1. Gradient background = draws eye
+     * 2. Blue border (3px thick) = framing effect
+     * 3. Soft shadow = floating effect (seems important)
+     * 4. Generous padding = content doesn't feel cramped
+     * 5. Larger font = easier to read
+     */
+
+    /*
+     * Scenario container styling
+     * background: linear-gradient = blue tinted background (eye-catching)
+     * 135deg = diagonal direction for visual interest
+     * From light blue to slightly darker blue
+     */
+    .stimulus-box {
+      background: linear-gradient(135deg, #f0f7ff 0%, #e0eeff 100%); /* Light blue gradient */
+      border: 3px solid var(--color-accent); /* Thick blue border (draws attention) */
+      border-radius: var(--border-radius-lg); /* 12px rounded corners (friendly, modern) */
+      padding: var(--spacing-xl);      /* 40px padding (very generous) */
+      margin-bottom: var(--spacing-xl); /* 40px space below */
+      line-height: 1.8;                /* Extra space between lines (very readable) */
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15); /* Soft blue shadow (elevation) */
+    }
+
+    /*
+     * Paragraph text inside scenario box
+     * margin: 0 = no extra margins
+     * font-size: 16px = large and comfortable reading size
+     * font-weight: 500 = slightly bold (stands out from regular text)
+     * letter-spacing: 0.3px = tiny extra space between letters (more readable)
+     */
+    .stimulus-box p {
+      margin: 0;                       /* No margins on paragraph */
+      font-size: 16px;                 /* Large, readable font */
+      font-weight: 500;                /* Medium bold (not too heavy) */
+      color: var(--color-primary);     /* Dark slate color */
+      letter-spacing: 0.3px;           /* Tiny extra space between letters */
+    }
+
+    /* ========== JSPSYCH PLUGIN OVERRIDES ========== */
+    /*
+     * jsPsych is a library with built-in styles
+     * These override/enhance jsPsych's default styling for our survey
+     */
+
     .jspsych-survey-multi-choice {
-      margin: var(--spacing-md) 0;
+      margin: var(--spacing-md) 0;     /* Margin around multi-choice questions */
     }
 
     .jspsych-survey-multi-choice-question {
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg); /* Space below question */
     }
 
     .jspsych-survey-multi-choice-option {
-      padding: var(--spacing-sm) 0;
-      margin-bottom: var(--spacing-xs);
+      padding: var(--spacing-sm) 0;    /* Space around each option */
+      margin-bottom: var(--spacing-xs); /* Small gap between options */
     }
 
+    /*
+     * Question text in Likert surveys
+     * margin-bottom: 2.5rem = extra space so questions don't run into table
+     * font-size: 17px = slightly larger for prominence
+     */
     .jspsych-survey-likert-question {
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl); /* Extra space below */
+      font-size: 17px;                 /* Slightly larger */
+      line-height: 1.6;                /* Comfortable spacing */
     }
 
     .jspsych-instructions {
-      margin: var(--spacing-lg) 0;
+      margin: var(--spacing-lg) 0;     /* Space around instructions */
     }
 
     .jspsych-instructions-page {
-      max-width: 100%;
-      margin: var(--spacing-md) 0;
+      max-width: 100%;                 /* Fill container width */
+      margin: var(--spacing-md) 0;     /* Space between pages */
     }
 
-    /* ========== PREAMBLE STYLING ========== */
     .jspsych-survey-html-form-preamble,
     .jspsych-instructions-nav {
-      margin-bottom: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg); /* Space below preambles */
     }
 
-    /* ========== NAVIGATION BUTTONS ========== */
     .jspsych-btn-group {
-      display: flex;
-      gap: var(--spacing-md);
-      margin-top: var(--spacing-lg);
-      justify-content: center;
+      display: flex;                   /* Horizontal layout */
+      gap: var(--spacing-md);          /* 24px space between buttons */
+      margin-top: var(--spacing-lg);   /* 32px space above */
+      justify-content: center;         /* Center buttons horizontally */
     }
 
     .jspsych-instructions-nav button {
-      min-width: 120px;
+      min-width: 120px;                /* Minimum button width */
     }
 
-    /* ========== RESPONSIVE DESIGN (Tablet) ========== */
+    /* ========== RESPONSIVE DESIGN (TABLET) ========== */
+    /*
+     * @media = conditional styling for specific screen sizes
+     * This section applies ONLY when screen is 1024px or smaller (tablets)
+     * Adjusts layout for smaller screens
+     */
     @media screen and (max-width: 1024px) {
       .jspsych-content-wrapper {
-        width: 85%;
-        max-width: 100%;
+        width: 85%;                    /* Wider on tablets (less wasted space) */
+        max-width: 100%;               /* Allow full width on small tablets */
       }
 
       body {
@@ -402,24 +698,29 @@
       }
     }
 
-    /* ========== RESPONSIVE DESIGN (Mobile) ========== */
+    /* ========== RESPONSIVE DESIGN (MOBILE) ========== */
+    /*
+     * @media = applies ONLY when screen is 768px or smaller (mobile phones)
+     * Makes adjustments for touchscreen devices
+     * Key changes: larger buttons, full-width elements, reduced font sizes
+     */
     @media screen and (max-width: 768px) {
       .jspsych-content-wrapper {
-        width: 95%;
+        width: 95%;                    /* Nearly full width on mobile */
         margin: 0 auto;
       }
 
       body {
-        padding: var(--spacing-sm);
+        padding: var(--spacing-sm);    /* Smaller padding on mobile */
       }
 
       .jspsych-content {
-        margin-top: var(--spacing-md);
+        margin-top: var(--spacing-md); /* Reduced margins on mobile */
         margin-bottom: var(--spacing-md);
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 24px;               /* Slightly smaller on mobile */
         margin-top: var(--spacing-lg);
       }
 
@@ -435,27 +736,36 @@
         font-size: 14px;
       }
 
+      /*
+       * Likert table on mobile
+       * Reduce padding and font size to fit on small screen
+       */
       .likert-table th,
       .likert-table td {
-        padding: 10px 6px;
-        font-size: 12px;
+        padding: 10px 6px;             /* Reduced padding */
+        font-size: 12px;               /* Smaller font */
       }
 
       .likert-table input[type="radio"] {
-        width: 16px;
+        width: 16px;                   /* Slightly smaller */
         height: 16px;
       }
 
       select {
-        min-width: 150px;
+        min-width: 150px;              /* Narrower on mobile */
       }
 
+      /*
+       * Form inputs on mobile
+       * Larger font (16px) prevents browser auto-zoom on iOS
+       * Keep padding generous for touch
+       */
       select,
       input[type="text"],
       input[type="number"],
       textarea {
         padding: var(--spacing-sm);
-        font-size: 16px; /* Prevents auto-zoom on iOS */
+        font-size: 16px;               /* IMPORTANT: prevents iOS auto-zoom */
       }
 
       button,
@@ -464,42 +774,56 @@
         font-size: 14px;
       }
 
+      /*
+       * Button layout on mobile
+       * flex-direction: column = stack buttons vertically
+       * width: 100% = make buttons full width (easier to tap)
+       */
       .jspsych-btn-group {
-        flex-direction: column;
+        flex-direction: column;        /* Stack buttons vertically */
       }
 
       .jspsych-btn-group button {
-        width: 100%;
+        width: 100%;                   /* Full width buttons */
       }
 
       .stimulus-box {
-        padding: var(--spacing-md);
+        padding: var(--spacing-md);    /* Reduced padding on mobile */
         margin-bottom: var(--spacing-lg);
       }
 
       .stimulus-box p {
-        font-size: 14px;
+        font-size: 14px;               /* Slightly smaller on mobile */
       }
 
+      /*
+       * Likert table scrolling on mobile
+       * Table might be too wide for mobile screen
+       * This allows horizontal scrolling
+       */
       .likert-container {
-        overflow-x: auto;
-        margin: var(--spacing-md) -1rem;
+        overflow-x: auto;              /* Enable horizontal scroll */
+        margin: var(--spacing-md) -1rem; /* Extend to screen edges */
         padding: 0 var(--spacing-sm);
       }
 
       .likert-table {
-        min-width: 500px;
+        min-width: 500px;              /* Wider than screen for scroll */
       }
     }
 
-    /* ========== EXTRA SMALL DEVICES (Phones) ========== */
+    /* ========== RESPONSIVE DESIGN (EXTRA SMALL DEVICES) ========== */
+    /*
+     * @media = applies ONLY when screen is 480px or smaller (very small phones)
+     * Further reduces sizes for extreme mobile devices
+     */
     @media screen and (max-width: 480px) {
       .jspsych-content-wrapper {
-        width: 100%;
+        width: 100%;                   /* Full width */
       }
 
       body {
-        padding: var(--spacing-xs);
+        padding: var(--spacing-xs);    /* Minimal padding */
       }
 
       h1 {
@@ -516,34 +840,84 @@
       }
 
       .likert-table {
-        min-width: 450px;
+        min-width: 450px;              /* Table width for horizontal scroll */
       }
 
       .likert-table th,
       .likert-table td {
-        padding: 8px 4px;
-        font-size: 11px;
+        padding: 8px 4px;              /* Very minimal padding */
+        font-size: 11px;               /* Very small font */
       }
 
+      /*
+       * IMPORTANT for iOS: keep input font at 16px to prevent auto-zoom
+       */
       select,
       input[type="text"],
       input[type="number"] {
         padding: 12px var(--spacing-sm);
-        font-size: 16px;
+        font-size: 16px;               /* MUST BE 16px or larger on mobile */
       }
     }
+
   </style>
 
 </head>
 <body></body>
 
 <script>
+/*
+ * ======================== SURVEY FLOW DOCUMENTATION ========================
+ * 
+ * This jsPsych survey collects participant responses about scenarios involving AI and human assistance.
+ * 
+ * SURVEY STRUCTURE:
+ * 1. Prolific ID collection - participant enters their unique ID for tracking
+ * 2. Welcome & Instructions - brief introduction to the survey
+ * 3. Demographics - age, gender, ethnicity, education level
+ * 4. Scenario Evaluation (6 trials) - participants view randomized scenarios and rate their agreement
+ *    on a 5-point Likert scale (Strongly Disagree to Strongly Agree)
+ * 
+ * DATA COLLECTION:
+ * - Each participant sees one random scenario from each of the 6 conditions:
+ *   • 2 agent types: Human vs. AI assistance
+ *   • 3 capability levels: High, Medium, Low performance
+ * - All responses are automatically exported to 'survey-results.csv'
+ * - Each row includes: participant ID, demographics, and scenario responses with metadata
+ * 
+ * KEY FUNCTIONS:
+ * - getRandomizedScenarios(): Selects and shuffles 6 scenarios (one per condition)
+ * - jsPsych.run(timeline): Executes the experiment sequence
+ * - on_finish callback: Saves data to CSV and displays on screen
+ * 
+ * ============================================================================
+ */
+
 // ===== EMBEDDED SCENARIOS DATA =====
-// This array contains all 54 vignettes (scenarios) for the study.
-// Each scenario has: id (task number), task (name), agent_type ('human' or 'ai'), 
-// capability ('high', 'medium', or 'low'), and text (the full scenario description).
-// The getRandomizedScenarios() function below will pick one random scenario from each 
-// of the 6 conditions (2 agent types × 3 capability levels) per participant.
+/*
+ * PURPOSE: Store all 54 vignettes (scenario stories) used in the study
+ * 
+ * DATA STRUCTURE:
+ * Each scenario is a JavaScript object with these properties:
+ * - id: Task number (1-9, representing different tasks)
+ * - task: Task name (e.g., "College Economics Assignment")
+ * - agent_type: WHO provided assistance - either 'human' (professor, colleague) or 'ai' (ChatGPT, AI assistant)
+ * - capability: HOW WELL assistance worked - 'high' (excellent results), 'medium' (okay results), 'low' (poor results)
+ * - text: Full scenario story describing the task and outcome
+ *
+ * EXPERIMENTAL DESIGN:
+ * The study has 2 × 3 = 6 EXPERIMENTAL CONDITIONS:
+ *   Agent Type (2): human vs. AI
+ *   Capability Level (3): high vs. medium vs. low
+ *
+ * TOTAL SCENARIOS:
+ * 9 tasks × 2 agent types × 3 capability levels = 54 scenarios total
+ *
+ * HOW IT'S USED:
+ * The getRandomizedScenarios() function selects ONE random scenario from each of the 6 conditions,
+ * creating a randomized set of 6 scenarios per participant.
+ * This ensures each participant sees all 6 conditions exactly once.
+ */
 const scenarios = [
   // ===== Task 1: College Economics Assignment =====
   { id: 1, task: 'College Economics Assignment', agent_type: 'human', capability: 'high', text: 'Noah is a college student taking a course called Principles of Economics. As part of the course, Noah was required to complete an assignment discussing the impact of minimum wage policies. Noah needed to read some reference material, but he wasn\'t sure where to start. Noah decided to ask his professor for guidance, who suggested a few key articles and explained the main points to focus on. With this support, Noah read the materials, organised his notes, and produced a clear, well-structured discussion that met all the requirements of the assignment and received an A+.' },
@@ -603,25 +977,35 @@ const scenarios = [
 ];
 
 // ===== RANDOMIZATION FUNCTION =====
-// This function creates a randomized set of 6 scenarios (one per condition).
-// It loops through all agent types ('human' and 'ai') and capability levels ('high', 'medium', 'low'),
-// finds all matching scenarios for each condition, picks one at random, and adds it to the list.
-// Then it shuffles the entire list so scenarios appear in random order to each participant.
+// PURPOSE: Creates a randomized set of 6 scenarios (one from each experimental condition)
+// 
+// HOW IT WORKS:
+// 1. Creates arrays for agent types ('human', 'ai') and capability levels ('high', 'medium', 'low')
+// 2. For each combination of agent_type × capability (6 total), finds all matching scenarios
+// 3. Randomly selects ONE scenario from each matching group
+// 4. Uses Fisher-Yates shuffle algorithm to randomize the order
+// 5. Returns shuffled array so each participant sees scenarios in different order
+//
+// RESULT: Each participant gets a unique, randomized set of 6 scenarios
 function getRandomizedScenarios() {
   const agentTypes = ['human', 'ai'];
   const capabilityLevels = ['high', 'medium', 'low'];
   const selectedScenarios = [];
   
+  // Loop through each condition and pick one random scenario
   for (const agentType of agentTypes) {
     for (const capability of capabilityLevels) {
+      // Filter scenarios matching this condition
       const matching = scenarios.filter(s => s.agent_type === agentType && s.capability === capability);
       if (matching.length > 0) {
+        // Pick a random scenario from matching set
         const randomIndex = Math.floor(Math.random() * matching.length);
         selectedScenarios.push(matching[randomIndex]);
       }
     }
   }
   
+  // Fisher-Yates shuffle algorithm: randomly permute the selected scenarios
   for (let i = selectedScenarios.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [selectedScenarios[i], selectedScenarios[j]] = [selectedScenarios[j], selectedScenarios[i]];
@@ -631,93 +1015,227 @@ function getRandomizedScenarios() {
 }
 
 // ===== PROLIFIC ID STORAGE =====
-// This global variable stores the participant's Prolific ID after they enter it in the first screen.
-// It's initialized as 'unknown' and will be set when the participant enters their ID.
-// All responses will be tagged with this ID so you can match survey responses to Prolific.
+/*
+ * PURPOSE: Store the participant's unique Prolific ID
+ * 
+ * HOW IT WORKS:
+ * 1. Participant enters their ID in the first screen
+ * 2. This variable stores it for the entire survey
+ * 3. Every data row gets tagged with this ID
+ * 4. In your CSV file, you can match responses to Prolific accounts
+ *
+ * INITIALIZATION: 'unknown' = placeholder value if participant doesn't enter ID
+ * ACTUAL VALUE: Set by the first trial's on_finish callback
+ * 
+ * USAGE: jsPsych automatically adds this to every row in the exported data
+ */
 let prolificID = 'unknown';
 
 // ===== JSPSYCH INITIALIZATION =====
-// This initializes the jsPsych framework. The on_finish callback runs when the entire experiment ends.
-// It loops through all collected data rows and adds the prolific_id to each one,
-// then displays the data on screen and saves it as a CSV file called 'survey-results.csv'.
+/*
+ * PURPOSE: Set up jsPsych framework and define what happens when survey completes
+ *
+ * jsPsych = JavaScript Psychology experiment library
+ * initJsPsych() = creates the experiment object with settings
+ *
+ * on_finish CALLBACK:
+ * This function runs AFTER all survey trials are complete
+ * 
+ * WHAT IT DOES:
+ * 1. jsPsych.data.get() = retrieve all collected responses
+ * 2. .forEach(row => ...) = loop through each response row
+ * 3. row.prolific_id = prolificID = add the Prolific ID to each row
+ * 4. jsPsych.data.displayData() = show all data on screen (for testing)
+ * 5. jsPsych.data.get().localSave('csv', 'survey-results.csv') = download data as CSV
+ *
+ * RESULT: Participants see a data summary, CSV is downloaded to Downloads folder
+ */
 const jsPsych = initJsPsych({
   on_finish: function() {
+    // Add Prolific ID to every data row
     jsPsych.data.get().forEach(row => {
       row.prolific_id = prolificID;
     });
+    // Show data on screen (useful for verification)
     jsPsych.data.displayData();
+    // Download data as CSV file
     jsPsych.data.get().localSave('csv', 'survey-results.csv');
   }
 });
 
 // ===== BUILD EXPERIMENT TIMELINE =====
-// The timeline array contains all the screens/trials that participants will see, in order.
-// We'll add the Prolific ID screen, instructions, demographics form, and 6 scenario screens.
+/*
+ * TIMELINE = the sequence of screens participants see in order
+ *
+ * PURPOSE: Define all trials (screens) in the experiment
+ * jsPsych will display each trial sequentially, collecting responses
+ * 
+ * STRUCTURE:
+ * timeline = [] is an array of trial objects
+ * Each trial object defines:
+ * - type: which jsPsych plugin to use (e.g., jsPsychSurveyHtmlForm)
+ * - Configuration options specific to that plugin
+ * - data: metadata attached to responses for analysis
+ * - on_finish: callback function when trial completes
+ *
+ * TRIALS IN ORDER:
+ * 1. Prolific ID collection
+ * 2. Welcome instructions
+ * 3. Demographics form
+ * 4-9. Six scenario evaluation trials (randomized)
+ */
 const timeline = [
   // ===== TRIAL 1: PROLIFIC ID CAPTURE =====
-  // This is the first screen. It asks participants to enter their Prolific ID.
-  // When they click 'Continue', the on_finish callback stores their ID in the prolificID variable.
+  /*
+   * SCREEN 1: Participant enters their Prolific ID
+   * 
+   * PURPOSE: Collect unique participant identifier
+   * TYPE: jsPsychSurveyHtmlForm = custom HTML form
+   * 
+   * WHAT HAPPENS:
+   * 1. Shows a text input field for Prolific ID
+   * 2. "Continue" button appears
+   * 3. on_finish callback captures the entered ID
+   * 4. ID is stored in global prolificID variable
+   * 5. Advances to next trial
+   * 
+   * HTML BREAKDOWN:
+   * - <h2>Prolific ID</h2> = section header
+   * - <div class="jspsych-survey-question"> = container for question
+   * - <label> and <input> = text field for ID entry
+   * - required = field must be filled before continuing
+   */
   {
     type: jsPsychSurveyHtmlForm,
     preamble: '<h2>Prolific ID</h2>',
     html: '<div class="jspsych-survey-question"><label for="prolific_id"><b>Enter your Prolific ID:</b></label><br><input type="text" id="prolific_id" name="prolific_id" required></div>',
     button_label: 'Continue',
     on_finish: function(data) {
+      // Capture the entered ID and store it globally
       prolificID = data.response.prolific_id;
     }
   },
+  
   // ===== TRIAL 2: WELCOME INSTRUCTIONS =====
-  // A brief welcome message explaining what participants will do.
-  // 'show_clickable_nav: true' makes the buttons clickable (instead of keyboard-only).
+  /*
+   * SCREEN 2: Welcome message with brief instructions
+   * 
+   * PURPOSE: Introduce survey and set expectations
+   * TYPE: jsPsychInstructions = built-in plugin for multi-page instructions
+   * 
+   * FEATURES:
+   * - show_clickable_nav: true = buttons to proceed (instead of keyboard only)
+   * - button_label_next: 'Begin' = custom button text
+   * - pages: array of HTML pages (can show multiple pages with Next/Previous)
+   */
   {
     type: jsPsychInstructions,
     pages: ['<h1>Welcome!</h1><p>This survey will take about 20 minutes. You will be asked demographic questions, followed by scenarios to evaluate.</p>'],
     show_clickable_nav: true,
     button_label_next: 'Begin'
   },
+  
   // ===== TRIAL 3: DEMOGRAPHICS FORM =====
-  // Collects basic demographic information: age, gender, ethnicity, and education level.
-  // The form uses HTML inputs (text, radio buttons, dropdowns).
-  // All fields are marked 'required' so participants must fill them before continuing.
+  /*
+   * SCREEN 3: Collect demographic information
+   * 
+   * PURPOSE: Gather participant background data for analysis
+   * TYPE: jsPsychSurveyHtmlForm = custom HTML form
+   * 
+   * FIELDS COLLECTED:
+   * 1. Age: number input (18-120)
+   * 2. Gender: radio buttons (male, female, non-binary, prefer not to say)
+   * 3. Ethnicity: dropdown menu
+   * 4. Education: dropdown menu
+   * 
+   * ALL FIELDS ARE REQUIRED = participant must fill everything before continuing
+   * 
+   * HTML BREAKDOWN:
+   * - <input type="number"> = age field with min/max
+   * - <input type="radio"> = gender options (only one selectable)
+   * - <select> = dropdown menus for ethnicity/education
+   * - required = validation enforced by browser
+   */
   {
     type: jsPsychSurveyHtmlForm,
-    preamble: '<h2>Demographics</h2>',
+    preamble: '<h2>Please answer the following questions:</h2>',
     html: `<div class="jspsych-survey-question"><label for="age"><b>Age</b></label><br><input type="number" id="age" name="age" min="18" max="120" required></div><div class="jspsych-survey-question"><b>Gender</b><br><label><input type="radio" name="gender" value="male" required> Male</label><br><label><input type="radio" name="gender" value="female"> Female</label><br><label><input type="radio" name="gender" value="non-binary"> Non-binary / third gender</label><br><label><input type="radio" name="gender" value="prefer_not"> Prefer not to say</label></div><div class="jspsych-survey-question"><label for="ethnicity"><b>Ethnicity</b></label><br><select id="ethnicity" name="ethnicity" required><option value="" disabled selected>Select…</option><option value="asian">Asian / Asian British</option><option value="black">Black / African / Caribbean / Black British</option><option value="mixed">Mixed / Multiple ethnic groups</option><option value="white">White</option><option value="other">Other ethnic group</option><option value="prefer_not">Prefer not to say</option></select></div><div class="jspsych-survey-question"><label for="education"><b>Highest level of education</b></label><br><select id="education" name="education" required><option value="" disabled selected>Select…</option><option value="no_qual">No formal qualifications</option><option value="gcse">GCSEs / O-levels</option><option value="a_level">A-levels / AS-levels</option><option value="vocational">Vocational qualification</option><option value="undergraduate">Undergraduate degree</option><option value="postgraduate">Postgraduate degree</option></select></div>`,
     button_label: 'Next'
   }
+  
+  // ===== TRIALS 4-9: SCENARIO EVALUATION (ADDED BELOW) =====
+  // These 6 trials are generated dynamically and added to timeline by code below
 ];
-
-// ===== TRIALS 4-9: SCENARIO EVALUATION (6 TRIALS) =====
-// The code below generates 6 scenario trials (one per condition).
-// Each trial displays a scenario and asks participants to rate their agreement on a 5-point Likert scale.
-// The data object captures metadata about each scenario (ID, task name, agent type, capability level).
-
 // ===== GENERATE RANDOMIZED SCENARIO TRIALS =====
-// Get a randomized set of 6 scenarios (one from each condition) in random order.
+/*
+ * PURPOSE: Create 6 scenario trials (one from each experimental condition)
+ * and add them to the timeline in random order
+ *
+ * FLOW:
+ * 1. getRandomizedScenarios() selects one random scenario per condition
+ * 2. .forEach() loops through each selected scenario
+ * 3. Creates a jsPsychSurveyLikert trial for each scenario
+ * 4. Adds trial to timeline array
+ *
+ * RESULT: 6 different trials added to timeline in randomized order
+ * Each participant sees a different combination of scenarios
+ */
+
+// Step 1: Get randomized set of 6 scenarios (one per condition)
 const randomizedScenarios = getRandomizedScenarios();
-// Loop through each scenario and add it as a trial to the timeline.
+
+// Step 2: Loop through each scenario and create a trial
 randomizedScenarios.forEach(scenario => {
   timeline.push({
+    // Use jsPysch's Likert scale plugin for rating questions
     type: jsPsychSurveyLikert,
+    
+    // Title of this trial (e.g., "Scenario 1", "Scenario 2", etc.)
+    // timeline.length - 2 = scenario number (subtracting 2 for ID and welcome screens)
     preamble: `<h2>Scenario ${timeline.length - 2}</h2>`,
+    
+    // Define the question to ask
     questions: [{
+      // The full scenario story text (paragraph describing the task and outcome)
       prompt: scenario.text,
+      
+      // Internal name for this question (used in data export)
+      // Format: scenario_[task-id]_[agent-type]_[capability]
       name: `scenario_${scenario.id}_${scenario.agent_type}_${scenario.capability}`,
+      
+      // The 5 response options for the Likert scale
+      // Participants click one of these 5 options
       labels: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
     }],
-    // The data object stores metadata about this scenario for analysis.
-    // In your CSV export, these will appear as columns (task, agent_type, capability, scenario_id).
+    
+    // METADATA: Information about this scenario for analysis
+    // These are NOT questions - they're data about the scenario
+    // They appear as columns in the exported CSV file
+    // This lets you analyze responses by agent type and capability level
     data: {
-      scenario_id: scenario.id,
-      task: scenario.task,
-      agent_type: scenario.agent_type,
-      capability: scenario.capability
+      scenario_id: scenario.id,              // Which task (1-9)
+      task: scenario.task,                   // Task name (e.g., "College Economics")
+      agent_type: scenario.agent_type,       // 'human' or 'ai'
+      capability: scenario.capability        // 'high', 'medium', or 'low'
     }
   });
 });
 
 // ===== START THE EXPERIMENT =====
-// This line starts the survey. jsPsych will display each trial in the timeline in order,
-// collect responses, and when finished, call the on_finish function to save the data.
+/*
+ * PURPOSE: Launch the survey with all trials
+ *
+ * jsPsych.run(timeline) = execute all trials in the timeline array
+ *
+ * WHAT HAPPENS:
+ * 1. Shows first trial (Prolific ID screen)
+ * 2. Collects response and advances
+ * 3. Shows second trial (Welcome)
+ * 4. Continues through all trials in order
+ * 5. When last trial completes, calls jsPsych on_finish callback
+ * 6. on_finish adds Prolific ID to data and downloads CSV
+ *
+ * RESULT: Survey runs start to finish, data is automatically saved
+ */
 jsPsych.run(timeline);
 </script>

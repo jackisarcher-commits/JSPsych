@@ -14,7 +14,7 @@
 
 const demographics = {
   type: jsPsychSurveyHtmlForm,
-  preamble: '<h2>Demographics</h2>',
+  preamble: '<h2>Please answer the following questions:</h2>',
   html: `
     <div class="jspsych-survey-question">
       <label for="age"><b>Age</b></label><br>
