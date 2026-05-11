@@ -243,33 +243,7 @@ let prolificID = 'unknown';
 const studyStartTime = new Date().toISOString();
 
 // ===== JSPSYCH INITIALIZATION =====
-const jsPsych = initJsPsych({
-  on_finish: function() {
-    // Tag every data row with the participant's Prolific ID and study start time
-    jsPsych.data.get().forEach(row => {
-      row.prolific_id = prolificID;
-      row.study_start_time = studyStartTime;
-    });
-
-    // Download the data as CSV
-    jsPsych.data.get().localSave('csv', 'coop-survey-results.csv');
-
-    // Replace the page with a thank-you message and Prolific redirect button
-    // IMPORTANT: Replace PROLIFIC_CODE_HERE with your actual completion code from Prolific
-    // (found in your study settings under Completion > Completion code)
-    document.body.innerHTML = `
-      <div style="text-align:center; margin-top:4em; font-family:sans-serif; max-width:600px; margin-left:auto; margin-right:auto;">
-        <h1>Thank you for completing the study!</h1>
-        <p>Your responses have been saved. Please click the button below to confirm your submission on Prolific and receive your payment.</p>
-        <a href="https://app.prolific.com/submissions/complete?cc=PROLIFIC_CODE_HERE"
-           style="display:inline-block; margin-top:1.5em; padding:14px 32px; background:#2196F3;
-                  color:#fff; text-decoration:none; border-radius:6px; font-size:1.1em; font-weight:bold;">
-          Complete on Prolific
-        </a>
-      </div>
-    `;
-  }
-});
+const jsPsych = initJsPsych();
 
 // ===== BUILD EXPERIMENT TIMELINE =====
 const timeline = [
@@ -361,6 +335,35 @@ randomizedScenarios.forEach(scenario => {
       capability: scenario.capability
     }
   });
+});
+
+// ===== SAVE DATA TRIAL =====
+// Tags all rows and downloads the CSV before the end screen appears.
+timeline.push({
+  type: jsPsychCallFunction,
+  func: function() {
+    jsPsych.data.get().forEach(row => {
+      row.prolific_id = prolificID;
+      row.study_start_time = studyStartTime;
+    });
+    jsPsych.data.get().localSave('csv', 'coop-survey-results.csv');
+  }
+});
+
+// ===== END SCREEN =====
+// IMPORTANT: Replace PROLIFIC_CODE_HERE with your actual completion code from Prolific
+// (found in your study settings under Completion > Completion code)
+timeline.push({
+  type: jsPsychHtmlButtonResponse,
+  stimulus: `
+    <h1>Thank you for completing the study!</h1>
+    <p>Your responses have been saved.</p>
+    <p>Please click the button below to confirm your submission on Prolific and receive your payment.</p>
+  `,
+  choices: ['Complete on Prolific'],
+  on_finish: function() {
+    window.location.href = 'https://app.prolific.com/submissions/complete?cc=PROLIFIC_CODE_HERE';
+  }
 });
 
 // ===== START THE EXPERIMENT =====
