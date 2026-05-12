@@ -23,141 +23,228 @@
  <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" type="text/css" />
 
  <style>
+
+    /* ============================================================
+       GENERAL LAYOUT
+       Controls the width and centering of the main content area
+       on every page of the survey.
+       ============================================================ */
+
+    /* Width of the main content column on desktop screens.
+       Increase (e.g. 75%) for a wider layout, decrease for narrower. */
     .jspsych-content-wrapper {
         width: 60%;
         margin: auto;
     }
 
+    /* When a survey form is displayed, allow it to fill the full
+       content column rather than being constrained. */
     .survey-container .jspsych-content-wrapper,
     .survey-container.jspsych-content-wrapper,
     .jspsych-content-wrapper.survey-container {
         width: 100%;
     }
 
+    /* The box that wraps each survey form (demographics, scales).
+       max-width caps how wide it grows on very large screens.
+       margin-left/right: auto keeps it centred. */
     .survey-container {
-        margin-bottom: 2em;
-        margin-top: 4em;
+        margin-bottom: 2em;   /* space below the form */
+        margin-top: 4em;      /* space above the form */
         width: 100%;
-        max-width: 900px;
+        max-width: 900px;     /* maximum width — increase for wider forms */
         margin-left: auto;
         margin-right: auto;
     }
+
+    /* ============================================================
+       SURVEY FORM ELEMENTS
+       Styling for question wrappers, answer options, and inputs.
+       ============================================================ */
+
+    /* Spacing and dividing line between each question block. */
     .question-container {
         margin-bottom: 2em;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #eee;   /* change colour or set to 'none' to remove the line */
         padding-bottom: 1.5em;
     }
+    /* Remove the dividing line after the very last question. */
     .question-container:last-child {
         border-bottom: none;
     }
+
+    /* The question text label above each answer group. */
     .question-text {
         margin-bottom: 1em;
         text-align: left;
     }
+
+    /* Each question block in the demographics form (age, gender, etc.).
+       text-align: left overrides jsPsych's default centred layout so
+       labels and inputs are left-aligned like a normal form. */
+    .jspsych-survey-question {
+        text-align: left;
+        margin-bottom: 1.2em;
+    }
+
+    /* Individual radio/checkbox answer options on demographics pages. */
     .response-option {
         margin-bottom: 0.5em;
         text-align: left;
+        font-size: 0.8em;   /* relative to parent — 1em = 100% of parent font size */
+    }
+
+    /* Dropdown menus (ethnicity, education) and text/number inputs (age, Prolific ID).
+       border-radius rounds the corners; increase for more rounding (e.g. 8px). */
+    select, input[type="text"], input[type="number"] {
+        padding: 5px;
+        border-radius: 4px;        /* corner rounding — set to 0 for sharp corners */
+        border: 1px solid #ccc;    /* border colour — e.g. #000 for black */
         font-size: 0.8em;
     }
+    /* Minimum width of dropdown menus so they don't collapse too narrow. */
+    select {
+        min-width: 200px;
+    }
+
+    /* ============================================================
+       LIKERT SCALE TABLE
+       Used for Political Orientation and AI Attitudes scales.
+       ============================================================ */
+
+    /* Wrapper — overflow-x: auto adds a horizontal scrollbar on
+       small screens if the table is wider than the viewport. */
     .likert-container {
         margin-top: 0.5em;
         overflow-x: auto;
     }
+
+    /* The table itself — border-collapse removes double borders. */
     .likert-table {
         width: 100%;
         border-collapse: collapse;
     }
+
+    /* Padding and alignment inside every header and data cell. */
     .likert-table th, .likert-table td {
-        padding: 10px 8px;
+        padding: 10px 8px;   /* top/bottom padding, left/right padding */
         text-align: center;
     }
+
+    /* The grey header row containing scale labels (e.g. "1 Strongly Disagree").
+       Change background-color to recolour the header band.
+       border-bottom is the line beneath the header. */
     .likert-table thead th {
         font-weight: bold;
         font-size: 0.8em;
-        background-color: #f0f0f0;
+        background-color: #f0f0f0;   /* header background — e.g. #dce8f5 for light blue */
         border-bottom: 2px solid #ccc;
     }
+
+    /* Thin dividing line between each question row. */
     .likert-table tbody tr {
         border-bottom: 1px solid #eee;
     }
+
+    /* Alternating row shading (every second row is slightly tinted).
+       Set to 'background-color: white' to disable shading. */
     .likert-table tbody tr:nth-child(even) {
-        background-color: #fafafa;
+        background-color: #fafafa;   /* very light grey — change to any colour */
     }
+
+    /* The left-hand cell containing the question text in each row.
+       min-width prevents the text column from becoming too narrow. */
     .likert-question {
         text-align: left;
         font-weight: normal;
         font-size: 0.9em;
         padding-right: 16px;
-        min-width: 220px;
-    }
-    select, input[type="text"], input[type="number"] {
-        padding: 5px;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-        font-size: 0.8em;
-    }
-    select {
-        min-width: 200px;
+        min-width: 220px;   /* increase if question text is being cut off */
     }
 
+    /* ============================================================
+       SCENARIO BOX
+       The grey framed box showing each vignette on scenario pages.
+       ============================================================ */
+
+    /* Background, border, and spacing of the scenario text box.
+       border-radius rounds the corners; box-shadow adds a subtle drop shadow. */
     .stimulus-box {
-        background-color: #f5f5f5;
-        border: 2px solid #000;
-        border-radius: 8px;
-        padding: 20px;
+        background-color: #f5f5f5;   /* box fill — e.g. #fff for white, #e8f0fe for blue tint */
+        border: 2px solid #000;      /* border thickness and colour */
+        border-radius: 8px;          /* corner rounding — set to 0 for sharp corners */
+        padding: 20px;               /* space inside the box between text and border */
         margin-bottom: 25px;
-        line-height: 1.6;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        line-height: 1.6;            /* line spacing within the scenario text */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);   /* drop shadow — set to 'none' to remove */
         text-align: left;
     }
 
+    /* "Scenario X of 6" label above the scenario box.
+       Change color for a different text colour. */
     .scenario-counter {
         font-size: 0.9em;
-        color: #555;
+        color: #555;       /* mid-grey — e.g. #000 for black */
         margin-bottom: 12px;
     }
 
+    /* The cooperation question shown below the scenario box.
+       font-weight: bold makes it stand out from the scenario text. */
     .cooperation-question {
         font-size: 1em;
         font-weight: bold;
         margin-top: 8px;
     }
 
+    /* ============================================================
+       CONSENT / INFORMATION SHEET
+       Styling for the participant information and consent page.
+       ============================================================ */
+
+    /* Overall container — uses Times New Roman to match a formal
+       document style. Change font-family for a different look. */
     .consent-container {
-        max-width: 760px;
+        max-width: 760px;          /* maximum width of the consent text */
         margin: 0 auto;
         text-align: left;
-        font-family: "Times New Roman", Times, serif;
+        font-family: "Times New Roman", Times, serif;   /* document font */
         font-size: 14px;
         line-height: 1.6;
     }
+    /* Main title ("Information sheet for participants"). */
     .consent-container h1 {
         text-align: center;
         font-size: 18px;
     }
+    /* Section headings (e.g. "Nature of the study."). */
     .consent-container h2 {
         font-size: 14px;
         margin-top: 1.5em;
         margin-bottom: 0.5em;
     }
+    /* Body paragraphs — text-align: justify spreads text to both margins. */
     .consent-container p {
         margin-bottom: 1em;
         text-align: justify;
     }
+    /* The study details table at the top of the consent form. */
     .consent-container table {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 1.5em;
     }
+    /* Cells in the consent details table. */
     .consent-container td {
         border: 1px solid #000;
         padding: 8px;
         vertical-align: top;
     }
+    /* Left column (label column) of the consent details table. */
     .consent-container td:first-child {
         font-weight: bold;
-        width: 40%;
+        width: 40%;   /* percentage of table width given to the label column */
     }
+    /* Bullet-point lists in the consent text. */
     .consent-container ul {
         margin-bottom: 1em;
         padding-left: 20px;
@@ -165,34 +252,48 @@
     .consent-container li {
         margin-bottom: 0.5em;
     }
+
+    /* Green "I Agree" button on the consent page.
+       Change background-color to recolour the button. */
     .consent-agree-btn {
-        background-color: #4CAF50 !important;
+        background-color: #4CAF50 !important;   /* green — e.g. #2196F3 for blue */
         color: white !important;
         font-size: 15px !important;
         padding: 12px 28px !important;
     }
+    /* Slightly darker green when hovering over "I Agree". */
     .consent-agree-btn:hover {
         background-color: #45a049 !important;
     }
+    /* Red "I Do Not Agree" button on the consent page. */
     .consent-decline-btn {
-        background-color: #f44336 !important;
+        background-color: #f44336 !important;   /* red — e.g. #9e9e9e for grey */
         color: white !important;
     }
+    /* Slightly darker red when hovering over "I Do Not Agree". */
     .consent-decline-btn:hover {
         background-color: #d32f2f !important;
     }
 
+    /* ============================================================
+       RESPONSIVE LAYOUT (screens narrower than 1000px)
+       These rules override the desktop styles on tablets and phones.
+       You generally do not need to edit this section.
+       ============================================================ */
     @media screen and (max-width: 1000px) {
+        /* Widen the content column to 90% on smaller screens. */
         .jspsych-content-wrapper {
             width: 90%;
             margin: auto;
         }
+        /* Increase the base font size on small screens for readability. */
         .jspsych-content {
             font-size: 24px;
         }
         .jspsych-html-slider-response-container {
             width: 90% !important;
         }
+        /* Widen survey forms on small screens. */
         .survey-container {
             margin-bottom: 2em;
             margin-top: 4em;
