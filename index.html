@@ -764,7 +764,21 @@ timeline.push({
       prolific_id: prolificID,
       study_start_time: studyStartTime
     });
-    jsPsych.data.get().localSave('csv', 'coop-survey-results.csv');
+    // Send data to DataPipe, which saves it to your linked OSF project.
+    // Each participant's responses are saved as a separate CSV file named by their Prolific ID.
+    // To switch to a different OSF project, log into pipe.jspsych.org and change the linked project there — no code change needed.
+    fetch('https://pipe.jspsych.org/api/data/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: '*/*',
+      },
+      body: JSON.stringify({
+        experimentID: 'C2TuYlgg9E0W',
+        filename: prolificID + '_' + studyStartTime.replace(/[:.]/g, '-') + '.csv',
+        data: jsPsych.data.get().csv(),
+      }),
+    });
   }
 });
 
