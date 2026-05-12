@@ -596,10 +596,11 @@ const timeline = [
       </div>
     `,
     choices: ['I Agree', 'I Do Not Agree'],
-    button_html: [
-      '<button class="jspsych-btn consent-agree-btn">%choice%</button>',
-      '<button class="jspsych-btn consent-decline-btn">%choice%</button>'
-    ],
+    on_load: function() {
+      const btns = document.querySelectorAll('.jspsych-html-button-response-button button');
+      if (btns[0]) btns[0].classList.add('consent-agree-btn');
+      if (btns[1]) btns[1].classList.add('consent-decline-btn');
+    },
     on_finish: function(data) {
       if (data.response === 1) {
         jsPsych.abortExperiment(
