@@ -66,20 +66,29 @@
     .likert-table {
         width: 100%;
         border-collapse: collapse;
-        table-layout: fixed;
     }
     .likert-table th, .likert-table td {
-        padding: 12px 8px;
+        padding: 10px 8px;
         text-align: center;
     }
-    .likert-table th {
+    .likert-table thead th {
         font-weight: bold;
-        font-size: 0.75em;
+        font-size: 0.8em;
+        background-color: #f0f0f0;
+        border-bottom: 2px solid #ccc;
+    }
+    .likert-table tbody tr {
+        border-bottom: 1px solid #eee;
+    }
+    .likert-table tbody tr:nth-child(even) {
+        background-color: #fafafa;
     }
     .likert-question {
         text-align: left;
         font-weight: normal;
-        font-size: 0.8em;
+        font-size: 0.9em;
+        padding-right: 16px;
+        min-width: 220px;
     }
     select, input[type="text"], input[type="number"] {
         padding: 5px;
@@ -300,14 +309,11 @@ const politicalOrientationScale = [
   { value: 7, label: '7 – Very right-wing'     },
 ];
 
-function buildRadioOptions(scaleName, options) {
-  return options
-    .map(opt => `
-      <label style="margin-right:12px;">
-        <input type="radio" name="${scaleName}" value="${opt.value}" required>
-        ${opt.label}
-      </label>`)
-    .join('<br>');
+function buildLikertRow(questionText, inputName, scale) {
+  const cells = scale.map((opt, i) =>
+    `<td><input type="radio" name="${inputName}" value="${opt.value}"${i === 0 ? ' required' : ''}></td>`
+  ).join('');
+  return `<tr><td class="likert-question">${questionText}</td>${cells}</tr>`;
 }
 
 const politicalOrientation = {
@@ -315,22 +321,32 @@ const politicalOrientation = {
   preamble: `
     <h2>Political Orientation</h2>
     <p><em>Crowson (2009)</em></p>
-    <p>Please indicate your political orientation on the following issues.</p>
+    <p>Please indicate your political orientation on each of the following dimensions.
+    There are 7 levels of agreement:</p>
+    <p><strong>1</strong> = Very left-wing &nbsp;&nbsp;
+       <strong>2</strong> = Left-wing &nbsp;&nbsp;
+       <strong>3</strong> = Somewhat left-wing &nbsp;&nbsp;
+       <strong>4</strong> = Moderate / centrist &nbsp;&nbsp;
+       <strong>5</strong> = Somewhat right-wing &nbsp;&nbsp;
+       <strong>6</strong> = Right-wing &nbsp;&nbsp;
+       <strong>7</strong> = Very right-wing</p>
+    <p>Please mark the corresponding box to indicate your political orientation on each dimension.</p>
   `,
   html: `
-    <div class="jspsych-survey-question">
-      <b>Economic</b><br>
-      ${buildRadioOptions('political_economic', politicalOrientationScale)}
-    </div>
-
-    <div class="jspsych-survey-question">
-      <b>Social</b><br>
-      ${buildRadioOptions('political_social', politicalOrientationScale)}
-    </div>
-
-    <div class="jspsych-survey-question">
-      <b>General</b><br>
-      ${buildRadioOptions('political_general', politicalOrientationScale)}
+    <div class="likert-container">
+      <table class="likert-table">
+        <thead>
+          <tr>
+            <th class="likert-question"></th>
+            ${politicalOrientationScale.map(opt => `<th>${opt.value}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+          ${buildLikertRow('Economic', 'political_economic', politicalOrientationScale)}
+          ${buildLikertRow('Social', 'political_social', politicalOrientationScale)}
+          ${buildLikertRow('General', 'political_general', politicalOrientationScale)}
+        </tbody>
+      </table>
     </div>
   `,
   button_label: 'Next',
@@ -390,18 +406,10 @@ const aiItems = [
 ];
 
 function buildAiItem(item, scale) {
-  const radios = scale
-    .map(opt => `
-      <label style="margin-right:12px;">
-        <input type="radio" name="${item.name}" value="${opt.value}" required>
-        ${opt.label}
-      </label>`)
-    .join('<br>');
-  return `
-    <div class="jspsych-survey-question">
-      <p>${item.text}</p>
-      ${radios}
-    </div>`;
+  const cells = scale.map((opt, i) =>
+    `<td><input type="radio" name="${item.name}" value="${opt.value}"${i === 0 ? ' required' : ''}></td>`
+  ).join('');
+  return `<tr><td class="likert-question">${item.text}</td>${cells}</tr>`;
 }
 
 function buildRandomisedAiItems() {
@@ -422,12 +430,35 @@ const attitudesAI = {
   preamble: `
     <h2>Attitudes Towards AI</h2>
     <p><em>Schepman &amp; Rodway (2020)</em></p>
-    <p>Please indicate how much you agree or disagree with each statement.</p>
+    <p>You are required to rate your level of agreement with the following statements.
+    There are 5 levels of agreement:</p>
+    <p><strong>1</strong> = Strongly disagree &nbsp;&nbsp;
+       <strong>2</strong> = Disagree &nbsp;&nbsp;
+       <strong>3</strong> = Neutral &nbsp;&nbsp;
+       <strong>4</strong> = Agree &nbsp;&nbsp;
+       <strong>5</strong> = Strongly agree</p>
+    <p>Please mark the corresponding box to provide your level of agreement with each statement.</p>
   `,
   html: function() {
     const randomisedItems = buildRandomisedAiItems();
     this._randomisedAiItems = randomisedItems;
-    return randomisedItems.map(item => buildAiItem(item, aiScale)).join('\n');
+    const headerCells = aiScale.map(opt => `<th>${opt.value}</th>`).join('');
+    const rows = randomisedItems.map(item => buildAiItem(item, aiScale)).join('\n');
+    return `
+      <div class="likert-container">
+        <table class="likert-table">
+          <thead>
+            <tr>
+              <th class="likert-question"></th>
+              ${headerCells}
+            </tr>
+          </thead>
+          <tbody>
+            ${rows}
+          </tbody>
+        </table>
+      </div>
+    `;
   },
   button_label: 'Next',
   on_finish: function(data) {
