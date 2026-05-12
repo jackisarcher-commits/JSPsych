@@ -322,15 +322,7 @@ const politicalOrientation = {
     <h2>Political Orientation</h2>
     <p><em>Crowson (2009)</em></p>
     <p>Please indicate your political orientation on each of the following dimensions.
-    There are 7 levels of agreement:</p>
-    <p><strong>1</strong> = Very left-wing &nbsp;&nbsp;
-       <strong>2</strong> = Left-wing &nbsp;&nbsp;
-       <strong>3</strong> = Somewhat left-wing &nbsp;&nbsp;
-       <strong>4</strong> = Moderate / centrist &nbsp;&nbsp;
-       <strong>5</strong> = Somewhat right-wing &nbsp;&nbsp;
-       <strong>6</strong> = Right-wing &nbsp;&nbsp;
-       <strong>7</strong> = Very right-wing</p>
-    <p>Please mark the corresponding box to indicate your political orientation on each dimension.</p>
+    Please mark the corresponding box.</p>
   `,
   html: `
     <div class="likert-container">
@@ -338,7 +330,7 @@ const politicalOrientation = {
         <thead>
           <tr>
             <th class="likert-question"></th>
-            ${politicalOrientationScale.map(opt => `<th>${opt.value}</th>`).join('')}
+            ${politicalOrientationScale.map(opt => `<th>${opt.value}<br><small style="font-weight:normal">${opt.label.split('– ')[1]}</small></th>`).join('')}
           </tr>
         </thead>
         <tbody>
@@ -431,18 +423,12 @@ const attitudesAI = {
     <h2>Attitudes Towards AI</h2>
     <p><em>Schepman &amp; Rodway (2020)</em></p>
     <p>You are required to rate your level of agreement with the following statements.
-    There are 5 levels of agreement:</p>
-    <p><strong>1</strong> = Strongly disagree &nbsp;&nbsp;
-       <strong>2</strong> = Disagree &nbsp;&nbsp;
-       <strong>3</strong> = Neutral &nbsp;&nbsp;
-       <strong>4</strong> = Agree &nbsp;&nbsp;
-       <strong>5</strong> = Strongly agree</p>
-    <p>Please mark the corresponding box to provide your level of agreement with each statement.</p>
+    Please mark the corresponding box.</p>
   `,
   html: function() {
     const randomisedItems = buildRandomisedAiItems();
     this._randomisedAiItems = randomisedItems;
-    const headerCells = aiScale.map(opt => `<th>${opt.value}</th>`).join('');
+    const headerCells = aiScale.map(opt => `<th>${opt.value}<br><small style="font-weight:normal">${opt.label.split('– ')[1]}</small></th>`).join('');
     const rows = randomisedItems.map(item => buildAiItem(item, aiScale)).join('\n');
     return `
       <div class="likert-container">
