@@ -123,6 +123,65 @@
         margin-top: 8px;
     }
 
+    .consent-container {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: left;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    .consent-container h1 {
+        text-align: center;
+        font-size: 18px;
+    }
+    .consent-container h2 {
+        font-size: 14px;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+    }
+    .consent-container p {
+        margin-bottom: 1em;
+        text-align: justify;
+    }
+    .consent-container table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1.5em;
+    }
+    .consent-container td {
+        border: 1px solid #000;
+        padding: 8px;
+        vertical-align: top;
+    }
+    .consent-container td:first-child {
+        font-weight: bold;
+        width: 40%;
+    }
+    .consent-container ul {
+        margin-bottom: 1em;
+        padding-left: 20px;
+    }
+    .consent-container li {
+        margin-bottom: 0.5em;
+    }
+    .consent-agree-btn {
+        background-color: #4CAF50 !important;
+        color: white !important;
+        font-size: 15px !important;
+        padding: 12px 28px !important;
+    }
+    .consent-agree-btn:hover {
+        background-color: #45a049 !important;
+    }
+    .consent-decline-btn {
+        background-color: #f44336 !important;
+        color: white !important;
+    }
+    .consent-decline-btn:hover {
+        background-color: #d32f2f !important;
+    }
+
     @media screen and (max-width: 1000px) {
         .jspsych-content-wrapper {
             width: 90%;
@@ -320,7 +379,7 @@ const politicalOrientation = {
   type: jsPsychSurveyHtmlForm,
   preamble: `
     <h2>Political Orientation</h2>
-    <p><em>Crowson (2009)</em></p>
+  
     <p>Please indicate your political orientation on each of the following dimensions.
     Please mark the corresponding box.</p>
   `,
@@ -421,7 +480,7 @@ const attitudesAI = {
   type: jsPsychSurveyHtmlForm,
   preamble: `
     <h2>Attitudes Towards AI</h2>
-    <p><em>Schepman &amp; Rodway (2020)</em></p>
+
     <p>You are required to rate your level of agreement with the following statements.
     Please mark the corresponding box.</p>
   `,
@@ -481,7 +540,79 @@ const timeline = [
       prolificID = data.response.prolific_id;
     }
   },
-  // TRIAL 2: Welcome instructions
+  // TRIAL 2: Information sheet & consent
+  {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: `
+      <div class="consent-container">
+        <h1>Information sheet for participants</h1>
+
+        <table>
+          <tr>
+            <td>Study title:</td>
+            <td>Asking for a friend: Are people less willing to cooperate with AI users?</td>
+          </tr>
+          <tr>
+            <td>Principal Investigator:</td>
+            <td>Adam Moore</td>
+          </tr>
+          <tr>
+            <td>Researcher collecting data:</td>
+            <td>Jack Archer</td>
+          </tr>
+        </table>
+
+        <h2>What is this document?</h2>
+        <p>This document explains what kind of study we're doing, what your rights are, and what will be done with your data. You should print this page for your records.</p>
+
+        <h2>Nature of the study.</h2>
+        <p>You are invited to participate in a study that requires you to read short scenarios or vignettes carefully and answer questions about them. Your responses will be recorded. Your session should last for up to 15 minutes. You will be given full instructions shortly.</p>
+
+        <h2>Compensation.</h2>
+        <p>You will be paid the equivalent of £6/hr or £1.20 for your participation in this study.</p>
+
+        <h2>Risks and benefits.</h2>
+        <p>There are no known risks to participation in this study. Other than the payment mentioned, there are no tangible benefits to you, however you will be contributing to our knowledge about psychology.</p>
+
+        <h2>Confidentiality and use of data.</h2>
+        <p>All the information we collect during the course of the research will be processed in accordance with Data Protection Law. In order to safeguard your privacy, we will never share personal information (like names or dates of birth) with anyone outside the research team. Your data will be referred to by a unique participant number rather than by name.</p>
+        <p>We will temporarily collect your worker ID to prevent repeat participation, however we will never share this information with anyone outside the research team. Your data will be deleted two weeks after study participation.</p>
+        <p>We will store any personal data using the University's secure encrypted storage service or in a locked filing cabinet at the University of Edinburgh. The anonymised data collected during this study will be used for research purposes and may be made available on public research repositories.</p>
+
+        <h2>What are my data protection rights?</h2>
+        <p>The University of Edinburgh is a Data Controller for the information you provide. You have the right to access information held about you. Your right of access can be exercised in accordance with Data Protection Law. You also have other rights including rights of correction, erasure and objection. For more details, including the right to lodge a complaint with the Information Commissioner's Office, please visit <a href="http://www.ico.org.uk" target="_blank">www.ico.org.uk</a>.</p>
+        <p>Questions, comments and requests about your personal data can also be sent to the University Data Protection Officer at <a href="mailto:dpo@ed.ac.uk">dpo@ed.ac.uk</a>.</p>
+
+        <h2>Voluntary participation and right to withdraw.</h2>
+        <p>Your participation is voluntary, and you may withdraw from the study during participation at any time and for any reason. If you withdraw from the study during or after data gathering, we will delete your data and there is no penalty or loss of benefits to which you are otherwise entitled. You may request any collected data be destroyed if you email us within two weeks of completing the study. Please contact the researchers via Prolific or <a href="mailto:J.Archer-1@sms.ed.ac.uk">J.Archer-1@sms.ed.ac.uk</a> or <a href="mailto:amoore23@ed.ac.uk">amoore23@ed.ac.uk</a> with your Prolific ID if you would like to withdraw your participation.</p>
+        <p>If you have any questions about what you've just read, please feel free to ask, or contact us later. You can contact us by email at <a href="mailto:J.Archer-1@sms.ed.ac.uk">J.Archer-1@sms.ed.ac.uk</a> or <a href="mailto:amoore23@ed.ac.uk">amoore23@ed.ac.uk</a>. This project has been approved by PPLS Ethics committee. If you have questions or comments regarding your rights as a participant, please contact the School Research Ethics Convenor at <a href="mailto:ppls.rec@ed.ac.uk">ppls.rec@ed.ac.uk</a>.</p>
+
+        <p><strong>By clicking "I Agree" below, you consent to the following:</strong></p>
+        <ul>
+          <li><strong>I agree to participate in this study.</strong></li>
+          <li>I confirm that I have read and understood <strong>how my data will be stored and used</strong>.</li>
+          <li>I understand that I have the <strong>right to terminate this session</strong> at any point. If I choose to <strong>withdraw after completing the study</strong>, my data will be deleted at that time.</li>
+        </ul>
+      </div>
+    `,
+    choices: ['I Agree', 'I Do Not Agree'],
+    button_html: [
+      '<button class="jspsych-btn consent-agree-btn">%choice%</button>',
+      '<button class="jspsych-btn consent-decline-btn">%choice%</button>'
+    ],
+    on_finish: function(data) {
+      if (data.response === 1) {
+        jsPsych.abortExperiment(
+          '<div style="text-align:center; margin-top:5em; font-family:sans-serif;">' +
+          '<h2>Thank you for your time.</h2>' +
+          '<p>You have chosen not to participate. You may now close this window.</p>' +
+          '</div>'
+        );
+      }
+    }
+  },
+
+  // TRIAL 3: Welcome instructions
   {
     type: jsPsychInstructions,
     pages: ['<h1>Welcome!</h1><p>This survey will take about 20 minutes. You will be asked demographic questions, followed by a series of short scenarios to evaluate.</p>'],

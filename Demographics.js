@@ -18,7 +18,7 @@ const demographics = {
   html: `
     <div class="jspsych-survey-question">
       <label for="age"><b>Age</b></label><br>
-      <input type="number" id="age" name="age" min="18" max="120" required>
+      <input type="number" id="age" name="age" min="18" max="100" required>
     </div>
 
     <div class="jspsych-survey-question">
