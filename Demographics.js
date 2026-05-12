@@ -92,7 +92,7 @@ const politicalOrientation = {
   type: jsPsychSurveyHtmlForm,
   preamble: `
     <h2>Political Orientation</h2>
-    <p><em>Crowson (2009)</em></p>
+   
     <p>Please indicate your political orientation on the following issues.</p>
   `,
   html: `
@@ -225,7 +225,7 @@ const attitudesAI = {
   type: jsPsychSurveyHtmlForm,
   preamble: `
     <h2>Attitudes Towards AI</h2>
-    <p><em>Schepman &amp; Rodway (2020)</em></p>
+  
     <p>Please indicate how much you agree or disagree with each statement.</p>
   `,
   // html is a function so randomisation runs fresh for each participant
