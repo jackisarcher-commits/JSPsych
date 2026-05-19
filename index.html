@@ -739,12 +739,12 @@ randomizedScenarios.forEach(scenario => {
     preamble: `
       <p class="scenario-counter">Scenario ${scenarioCount} of 6</p>
       <div class="stimulus-box">${scenario.text}</div>
-      <p class="cooperation-question">Please indicate how much you agree with the following statement:</p>
+      <p class="cooperation-question">How likely would you be to choose to work with this person in the future?</p>
     `,
     questions: [{
       prompt: 'I would be willing to cooperate with this person in the future.',
       name: `scenario_${scenario.id}_${scenario.agent}_${scenario.outcome}`,
-      labels: ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
+      labels: ['Strongly Disagree', 'Disagree', 'Somewhat Disagree', 'Neutral', 'Somewhat Agree', 'Agree', 'Strongly Agree']
     }],
     data: {
       scenario_id: scenario.id,
